@@ -1,6 +1,6 @@
 ## @knitr transMode
 
-nvs2018 <- read.csv("../data/nvs2018.csv")
+nvs2018 <- read.csv("./data/nvs2018.csv")
 library(dplyr)
 #library(tidyr)
 library(likert)

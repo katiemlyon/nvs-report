@@ -1,0 +1,1770 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={National Wildlife Refuge Visitor Survey: 2018 Individual Refuge Results for Dungeness National Wildlife Refuge},
+            pdfauthor={Alia M. Dietsch, Colleen M. Hartel, Katie M. Lyon, Natalie R. Sexton},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{National Wildlife Refuge Visitor Survey: 2018 Individual Refuge Results
+for Dungeness National Wildlife Refuge}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Alia M. Dietsch, Colleen M. Hartel, Katie M. Lyon, Natalie R. Sexton}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+\documentclass{report}
+% explicitly call these packages to avoid this issue:
+% https://stackoverflow.com/questions/46080853/why-does-rendering-a-pdf-from-rmarkdown-require-closing-rstudio-between-renders?
+% utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{color}          % enables font colors
+\usepackage[table]{xcolor}  % enables even more font and background colors
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage[normalem]{ulem}
+\usepackage[export]{adjustbox}  % enables two column images at the top
+
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage[utf8]{inputenc}   % sets document encoding to utf8
+\usepackage[default]{lato}    % sets default font to Lato
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{memhfixc}
+\usepackage{amssymb}          % for itemized list styles
+
+% document setup
+\definecolor{urbnblue}{HTML}{1696D2}    % defines the Urban Institute blue color
+\usepackage{enumitem}                   % bullet alignment
+\setlist[2]{nosep}                      % sets the itemsep and parsep for all level two lists to 0
+\setenumerate{nosep}                    % sets no itemsep for enumerate lists only
+\pagenumbering{gobble}                  % disable page numbering
+\usepackage[hang,flushmargin]{footmisc} % don't indent footnotes
+\usepackage[document]{ragged2e}         % ragged right
+\usepackage[none]{hyphenat}             % disable work breaks
+\renewcommand\thefootnote{\textcolor{urbnblue}{\arabic{footnote}}} % change the color of the footnote indicator
+\hypersetup{
+  colorlinks,
+  linkcolor=urbnblue,
+  urlcolor=urbnblue,
+}
+\usepackage{parskip}
+\setlength{\parskip}{0.1in}               % set paragraph spacing
+
+% logo
+\newcommand{\nvslogo}[0]{
+  \begin{figure}
+    \hspace{3in}
+    \includegraphics[width=1.5in]{images/logo.jpg}
+    \label{fig:logo}
+  \end{figure}
+}
+
+
+% titles (14pt font)
+\newcommand{\nvstitle}[1]{
+  \begin{center}
+      \textbf{\LARGE{#1}}
+  \end{center}
+}
+  
+% subtitles (12pt font)
+\newcommand{\nvssubtitle}[1]{
+  \begin{center}
+    \Large{\textcolor{urbnblue}{#1}}
+    \vspace{0.25in}    
+  \end{center}
+}
+
+% authors (11pt font)
+\newcommand{\nvsauthors}[1]{
+  \begin{center}
+    \textit{\large{#1}}
+    \vspace{0.25in} 
+  \end{center}
+}
+
+% heading 1 (20pt font)
+\newcommand{\nvsheadingone}[1]{
+  \textbf{\textcolor{urbnblue}{#1}}
+}
+
+% heading 2 (14pt font)
+\newcommand{\nvsheadingtwo}[1]{
+  \textbf{\textcolor{urbnblue}{#1}}
+}
+
+% figure label
+\newcommand{\nvsfigurenumber}[1]{
+  \textcolor{urbnblue}{\tiny{\\} \normalsize{FIGURE #1 \\}}
+}
+
+% figure title
+\newcommand{\nvsfiguretitle}[1]{
+  \textbf{\normalsize{#1} \\}
+}
+
+% figure source
+\newcommand{\nvssource}[1]{
+  \textbf{\footnotesize{#1}} \break
+}
+
+% figure note
+\newcommand{\nvsnote}[1]{
+  \textbf{\footnotesize{#1}} \break
+}
+
+% bullet points
+\renewcommand{\labelitemi}{\color{urbnblue}\tiny$\blacksquare$}   % blue square
+\renewcommand{\labelitemii}{\color{urbnblue}\tiny$\blacksquare$}  % blue square
+\renewcommand{\labelitemiii}{\color{urbnblue}\tiny$\blacksquare$} % blue square
+\renewcommand{\labelitemiv}{\color{urbnblue}\tiny$\blacksquare$}  % blue square
+
+\newenvironment{nvsbullets}
+{\begin{itemize}[leftmargin=*,labelindent=0.25in,labelsep=0.1875in]
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}}
+{\end{itemize}} 
+
+% numbered list
+\newenvironment{nvsenumerate}
+{\begin{enumerate}[leftmargin=*,labelindent=0.25in,labelsep=0.15625in]
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}}
+{\end{enumerate}} 
+
+% preamble1
+\newcommand{\preambleone}[1]{
+  \textbf{\normalsize{#1} \\}
+}
+
+\let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter*{}\label{section}
+\addcontentsline{toc}{chapter}{}
+
+``Inspiring quote about the refuge lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Sed vestibulum lorem id purus laoreet, eget
+luctus sem suscipit. In hac habitasse platea dictumst.''
+
+---A visitor to Dungeness National Wildlife Refuge
+
+\begin{center}\includegraphics{refuge-info/Dungeness National Wildlife Refuge/cover} \end{center}
+
+\chapter*{Acknowledgements}\label{acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+This study was funded by the U.S. Fish and Wildlife Service's Natural
+Resource Program Center, Division of Visitor Services and
+Communications, and Transportation Program. The study design and survey
+instrument were developed collaboratively with representatives from U.S.
+Fish and Wildlife Service and researchers from The Ohio State University
+(OSU). For their support and input to the study, we would like to thank
+{[}names{]}; and any staff and volunteers at Dungeness National Wildlife
+Refuge who assisted with the implementation of this survey effort.
+Finally, we would like to especially acknowledge the following American
+Conservation Experience team members for their work in implementing the
+on-the-ground sampling for the 2018 survey effort: Ellen Bley, Kylie
+Campbell, Michelle Ferguson, Justin Gole, James Puckett, Nicole Stagg,
+and Angelica Varela. The success of this effort is largely a result of
+their dedication to the project, as well as to the people who come to
+explore these unique lands.
+
+\textbf{Suggested citation:}
+
+Dietsch, A. M., Hartel, C. M., Lyon, K. M., and Sexton, N.R. (2019).
+``National Wildlife Refuge Visitor Survey: 2018 Individual Refuge
+Results for Dungeness National Wildlife Refuge. The Ohio State
+University, Columbus, OH.
+
+\textbackslash{}begin\{figure\}
+
+\{\centering \includegraphics[width=42in,keepaspectratio]{refuge-info/Dungeness National Wildlife Refuge/image1}
+
+\}
+
+\textbackslash{}caption\{\texttt{r\ paste(\textquotesingle{}refuge-info\textquotesingle{},\ params\$RefugeName,\ \textquotesingle{}image1caption.txt\textquotesingle{},\ sep\ =\ \textquotesingle{}/\textquotesingle{})}\}\label{fig:ref-image1}
+\textbackslash{}end\{figure\}
+
+\chapter*{Executive Summary}\label{executive-summary}
+\addcontentsline{toc}{chapter}{Executive Summary}
+
+This report describes the results of a visitor survey at Dungeness
+National Wildlife Refuge (this refuge). Visitors were contacted during
+two sampling periods outlined in Appendix A. A total of 291 visitor
+groups were contacted to participate in the survey. Of those groups, 291
+agreed to participate in the study. Questionnaires were completed and
+returned by 291 visitors, resulting in a completion rate of 1\% among
+those visitor groups that agreed to participate in the study and an
+overall response rate of 1\% for the study.
+
+\textbf{Key Findings:}
+
+\begin{itemize}
+\tightlist
+\item
+  X are the most popular activities. They are also the most commonly
+  mentioned primary reason for visiting.
+\item
+  11\% respondents had visited the refuge before
+\item
+  Visitors average \texttt{r} visits per year
+\item
+  Visit length averages \texttt{r} hours
+\item
+  \textbf{The most frequently used information resource is personal
+  knowledge from previous visits (86\%).} Other frequently used
+  information sources are Refuge employees or volunteers (72\%) and
+  Kiosks/displays/exhibits at this refuge (68\%). More than \texttt{r}
+  (\texttt{r}\%) did not obtain any outside information prior to
+  visiting.
+\item
+  Visitors opinions about this refuge
+\item
+  Transportation at this refuge
+\item
+  Visitor spending in the local communities
+\item
+  Enhancing future refuge visits
+\end{itemize}
+
+\chapter{Introduction}\label{intro}
+
+The National Wildlife Refuge System plays a unique role in connecting
+current and future generations to our nation's rich natural heritage. A
+national wildlife refuge visit can instill a lasting passion for
+wildlife and wild lands. A carefully designed set of amenities,
+services, and recreational opportunities contributes to and enhances the
+visitor experience, making these important connections possible.
+Opportunities for outdoor recreation draw millions of people each year
+to national wildlife refuges. Many visitors enjoy hiking, paddling,
+wildlife viewing or nature photography. Others take part in heritage
+sports such as hunting and fishing. All these activities offer visitors
+a chance to unplug from the stresses of modern life and reconnect with
+their natural surroundings.
+
+\section{The National Wildlife Refuge
+System}\label{the-national-wildlife-refuge-system}
+
+Established in 1903, and managed by the U.S. Fish and Wildlife Service
+(Service), The National Wildlife Refuge System (Refuge System) is the
+leading network of protected lands and waters in the world specifically
+dedicated to the conservation of fish, wildlife, and their habitats.
+With 55 million visits per year, the Refuge System is committed to
+maintaining customer satisfaction and public engagement and strives to
+be the best place for people and wildlife to thrive (U.S. Fish and
+Wildlife Service and U.S. Census Bureau
+\protect\hyperlink{ref-USFWS2018}{2018}).
+
+As stated in the National Wildlife Refuge Improvement Act of 1997, the
+mission of the Refuge System is ``to administer a national network of
+lands and waters for the conservation, management and, where
+appropriate, restoration of the fish, wildlife, and plant resources and
+their habitats within the United States for the benefit of present and
+future generations of Americans.'' Part of achieving this mission is the
+goal ``to foster understanding and instill appreciation of the diversity
+and interconnectedness of fish, wildlife, and plants, and their
+habitats'' and ``to provide and enhance opportunities to participate in
+compatible wildlife-dependent recreation.'' There are 567 national
+wildlife refuges (refuges) and 38 wetland management districts
+nationwide, including possessions and territories in the Pacific and
+Caribbean, encompassing 95 million acres of land (U.S. Fish and Wildlife
+Service and U.S. Census Bureau \protect\hyperlink{ref-USFWS2018}{2018}).
+(QUESTION: Do we add marine national monuments and submerged lands and
+waters?) There is at least one refuge in every state and territory and
+within an hour's drive of most major cities. This accessibility makes it
+easy for communities to enjoy their wildlife heritage. The Refuge System
+attracts more than 55 million visitors annually, including 39.6 million
+people who observe and photograph birds and wildlife, 9.7 million who
+hunt and fish, and 2.6 million teachers and students who use refuges as
+outdoor classrooms.
+
+\section{Why a survey of refuge
+visitors?}\label{why-a-survey-of-refuge-visitors}
+
+Understanding visitor perceptions of refuges and characterizing their
+experiences on refuges are critical elements of managing refuges and
+meeting the goals of the Refuge System. The President's Management
+Agenda identifies the National Wildlife Refuge System as a high-impact
+service provider. Refuges work to maintain a high level of customer
+satisfaction by operating visitor centers; designing, installing and
+maintaining accessible trails; constructing viewing blinds; issuing
+special use permits; contracting with private concessions, and
+leveraging low recreation fees for facility improvements.
+
+Understanding changing visitor trends requires the same commitment to
+robust inventory and monitoring that the Refuge System has so diligently
+applied throughout its history. The national visitor survey effort
+provides managers, planners, visitor services specialists, and others
+with reliable baseline data. Knowing who visits refuges and what they
+do, how satisfied they are with their experience, and what their
+economic contributions are to the local community help refuge staff
+communicate the value of the refuge, set priorities, plan better, and
+track trends over time.
+
+The purpose of the overall effort is to better understand visitor
+experiences and trip characteristics on refuges across Refuge System, to
+gauge visitors levels of satisfaction with existing recreational
+opportunities, and to garner feedback from visitors about their trips to
+inform the design of programs and facilities. The survey results are
+intended to inform performance, planning, budget, and communications
+goals. Results will also inform Comprehensive Conservation Plans (CCPs),
+visitor services, and transportation planning processes. Baseline
+information is also fundamental to the Service's Inventory and
+Monitoring Initiative, and can be used to assess changes over time (U.S.
+Fish and Wildlife Service \protect\hyperlink{ref-USFWS2017}{2017}).
+
+Systematic monitoring of national wildlife refuges with 50,000 or more
+visitors per year will occur on a 5-year rotating basis (approx. 36
+refuges/year). Visitors are contacted onsite, and the survey is
+administered by mail (with web option) once visitors return home.
+
+The national visitor survey is a collaborative effort between the
+Service, The Ohio State University (OSU), and American Conservation
+Experience (ACE).
+
+\chapter{Refuge Description}\label{refuge-description}
+
+Dungeness NWR is located on the Olympic Peninsula in Sequim, WA. The
+refuge was established in 1915 to preserve the unique habitat of the
+Dungeness Spit, the longest natural sand spit in the United States. The
+gravel beaches of the spit and the surrounding tide flats, eel beds, and
+bay provide habitat and nesting ground for a variety of birds and other
+species. While the refuge is only 773 acres, many different migratory
+species use the refuge seasonally while others call it home year round.
+Shorebirds migrate to the refuge in the spring and fall to feed in the
+highly productive tide flats and waterfowl spend their winters in the
+calm waters of the Dungeness Bay. Perhaps the most charismatic wildlife
+to call the refuge home are harbor seals who raise their pups on the
+isolated tip of the spit. Young salmon and steelhead feed and grow in
+the eelgrass beds surrounding the spit. In addition, the second oldest
+lighthouse in the state of Washington still shines bright on the refuge.
+Built in 1857, the lighthouse is a popular hiking destination. The spit
+continues to grow each year as the sandy bluffs along the Washington
+coast erode and are deposited along the spit.
+
+Dungeness NWR attracts over 101,000 visitors annually (U.S. Fish and
+Wildlife Service, 2018, written comm.). Visitors flock from around the
+world to hike along this scenic beach. The 10 mile hike out and back to
+the lighthouse is an exciting challenge for all ages, from eager Boy
+Scouts to retirees. Along the beach, visitors can watch bald eagles soar
+overhead and see flocks of gulls resting along the driftwood. Visiting
+this refuge is often part of a trip to nearby Olympic National Park and
+many visitors camp at the neighboring county park. Figure
+\ref{fig:ref-map1} displays a map of Dungeness NWR. For more
+information, please visit \url{https://www.fws.gov/refuge/Dungeness/}.
+
+\textbackslash{}begin\{figure\}
+\includegraphics[width=19.29in]{refuge-info/Dungeness National Wildlife Refuge/map}
+\textbackslash{}caption\{Map of
+\texttt{params\$RefugeName}\}\label{fig:ref-map1}
+\textbackslash{}end\{figure\} TODO: FIX CAPTION AND ADD MAP URL
+
+\begin{figure}
+\centering
+\includegraphics{nvs-report_files/figure-latex/ref-map2-1.pdf}
+\caption{\label{fig:ref-map2}Map of \texttt{params\$RefugeName}}
+\end{figure}
+
+\chapter{Methods}\label{methods}
+
+\section{Contacting Visitors}\label{contacting-visitors}
+
+Refuge staff identified two separate 14-day sampling periods, and one or
+more locations at which to sample, that best reflected the diversity of
+use and specific visitation patterns of each participating refuge. A
+standardized sampling schedule was created for all refuges that included
+eight randomly selected sampling shifts during each of the two sampling
+periods. Sampling shifts were four hour time bands, stratified across AM
+and PM as well as weekend and weekdays. In coordination with refuge
+staff, any necessary customizations were made to the standardized
+schedule to accommodate the identified sampling locations and to address
+specific spatial and temporal patterns of visitation.
+
+Twenty-five visitors (18 years of age or older) per sampling shift were
+systematically selected, for a total of 375 willing participants per
+refuge (or 200 per sampling period) to ensure an adequate sample of
+completed surveys. When necessary, shifts were moved, added, or extended
+to overcome logistical limitations (for example, weather or low
+visitation at a particular site) in an effort to reach target numbers.
+
+American Conservation Experience (ACE) interns and/or USFWS Human
+Dimensions staff (survey recruiters) contacted visitors onsite following
+a protocol provided by OSU that was designed to obtain a representative
+sample. Instructions included contacting visitors across the entire
+sampling shift (for example, every nth visitor for dense visitation, as
+often as possible for sparse visitation) and contacting only one person
+per group. Visitors were informed of the survey effort and asked to
+participate. Willing participants provided their name, mailing address,
+and preference for language (English or Spanish) and were given a small
+token incentive (for example, a magnet or sticker) for their
+participation. Survey recruiters were also instructed to record any
+refusals and then proceed with the sampling protocol.
+
+All visitors that agreed onsite to fill out a survey received the same
+sequence of correspondence. This approach allowed for an assessment of
+visitors' likelihood of completing the survey by their preferred survey
+mode (Sexton, Miller, and Dietsch
+\protect\hyperlink{ref-sexton2011}{2011}). Researchers at OSU sent the
+following materials to all visitors agreeing to participate who had not
+yet completed a survey at the time of each mailing (Dillman, Smyth, and
+Christian \protect\hyperlink{ref-dillman2014}{2014}):
+
+\begin{itemize}
+\tightlist
+\item
+  A postcard mailed within 10 days of the initial onsite contact
+  thanking visitors for agreeing to participate in the survey and
+  inviting them to complete the survey online.
+\item
+  A packet mailed 14 days later consisting of a cover letter, survey,
+  and postage paid envelope for returning a completed paper survey.
+\item
+  A reminder postcard mailed 14 days later.
+\item
+  A second packet mailed 7 days later consisting of another cover
+  letter, survey, and postage paid envelope for returning a completed
+  paper survey.
+\end{itemize}
+
+Each mailing included instructions for completing the survey online, so
+visitors had an opportunity to complete an online survey with each
+mailing. Those visitors indicating a preference for Spanish were sent
+Spanish versions of all correspondence (including the survey). Online
+survey data were exported and paper survey data were entered into
+Microsoft Excel using a standardized survey codebook and data entry
+procedure. All survey data were analyzed using Statistical Package for
+the Social Sciences (SPSS, v.23) software.\footnote{Any use of trade,
+  firm, or product names is for descriptive purposes only and does not
+  imply endorsement by the U.S. Government}
+
+\section{Sampling at This Refuge}\label{sampling-at-this-refuge}
+
+A total of 291 visitors agreed to participate in the survey during the
+two sampling periods at the identified locations at Dungeness National
+Wildlife Refuge Table \ref{tab:sampling-dates}. In all, 291 visitors
+completed the survey for a 100\% response rate, and 10\% margin of error
+at the 95\% confidence level.\footnote{A margin of error of ± 5\% at a
+  95\% confidence level, for example, means that, if a reported
+  percentage is 55\%, then 95 out of 100 times, that sample estimate
+  would fall between 50\% and 60\% if the same question was asked in the
+  same way. The margin of error is calculated with an 80/20 response
+  distribution, assuming that for a given dichotomous choice question,
+  approximately 80\% of respondents would select one choice and 20\%
+  would select the other choice (Salant and Dillman
+  \protect\hyperlink{ref-salant1994}{1994}).}
+
+Table: \label{tab:sampling-dates}
+
+\section{Interpreting the Results}\label{interpreting-the-results}
+
+The extent to which these results accurately represent the total
+population of visitors to this refuge is dependent on the number of
+visitors who completed the survey (sample size) and the ability of the
+variation resulting from that sample to reflect the beliefs and
+interests of different visitor user groups (Scheaffer et al.
+\protect\hyperlink{ref-scheaffer1996}{2011}). The composition of the
+sample is dependent on the ability of the standardized sampling protocol
+for this study to account for the spatial and temporal patterns of
+visitor use unique to each refuge. Spatially, the geographical layout
+and public-use infrastructure varies widely across refuges. Some refuges
+can be accessed only through a single entrance, while others have
+multiple unmonitored access points across large expanses of land and
+water. As a result, the degree to which sampling locations effectively
+captured spatial patterns of visitor use will vary from refuge to
+refuge. Temporally, the two 14-day sampling periods may not have
+effectively captured all of the predominant visitor uses/activities on
+some refuges during the course of a year, which may result in certain
+survey measures such as visitors' self-reported ``primary activity
+during their visit'' reflecting a seasonality bias. Results contained
+within this report may not apply to visitors during all times of the
+year or to visitors who did not visit the survey locations.
+
+In this report, visitors who responded to the survey are referred to
+simply as ``visitors.'' However, when interpreting the results for
+Dungeness National Wildlife Refuge, any potential spatial and temporal
+sampling limitation specific to this refuge needs to be considered when
+generalizing the results to the total population of visitors. For
+example, a refuge that sampled during a special event (for example,
+birding festival) held during the spring may have contacted a higher
+percentage of visitors who traveled greater than 50 miles to get to the
+refuge than the actual number of these people who would have visited
+throughout the calendar year (that is, oversampling of nonlocals).
+Another refuge may not have enough nonlocal visitors in the sample to
+adequately represent the beliefs and opinions of that group type. If the
+sample for a specific group type (for example, nonlocals, hunters,
+visitors who paid a fee) is too low (n \textless{} 30), a warning is
+included in the text. Finally, the term ``this visit'' is used to
+reference the visit during which people were contacted to participate in
+the survey.
+
+\chapter{Visitor and Trip Characteristics}\label{visit}
+
+Data collected as part of this survey provides a baseline from which to
+understand who currently visits the refuge, and who engages in the
+multitude of activities offered by the refuge. Baseline data also allow
+refuge staff and others to assess any potential changes in visitor
+characteristics over time, which is core to the scientific foundation of
+the Service's Inventory and Monitoring Initiative (U.S. Fish and
+Wildlife Service \protect\hyperlink{ref-USFWS2017}{2017}).
+
+\section{Visitor Characteristics}\label{visitor-characteristics}
+
+\BeginKnitrBlock{preamble1}
+In particular, depictions of the demographics (e.g., age, economic
+status, education, race and ethnicity) of both local and non-local
+visitors can inform refuge managers about which groups of people are
+directly benefitting from what the refuge currently offers. This type of
+visitor data can then be compared with future visitor data to assess
+changes in visitation due to various conditions (e.g., shifts in
+climate, resource, staff, or infrastructure). Visitor demographics can
+also be compared to the demographic composition of nearby communities
+using data from U.S. Census, the American Community Survey, or through
+online tools such as Social Explorer (www.socialexplorer.com) to assess
+whether the nearby community composition is reflected within refuge
+visitation, which is a critical component of getting to know and relate
+to the community (U.S. Fish and Wildlife Service
+\protect\hyperlink{ref-USFWS2014}{2014}). Such data can also determine
+what new audiences from the local community - if not currently reflected
+in the visitor population - could potentially be engaged through
+appropriately-targeted outreach efforts (e.g., building partnerships,
+enhancing stepping stones of engagement; (U.S. Fish and Wildlife Service
+\protect\hyperlink{ref-USFWS2014}{2014})).
+\EndKnitrBlock{preamble1}
+
+Visitors to Dungeness National Wildlife Refuge were 51\% male (with an
+average age of 56 years) and 44\% female (with an average age of 54
+years). Visitors, on average, reported they had 16 years of formal
+education (equivalent to College). The median level of income was
+\$50,000-\$74,999. See (AppendixB) for more demographic information.
+
+\section{Participation in Outdoor
+Activities}\label{participation-in-outdoor-activities}
+
+\BeginKnitrBlock{preamble1}
+Quality recreational experiences on refuges provide opportunities for
+visitors to connect with nature and the outdoors. Specifically,
+wildlife-dependent recreation, such as hunting, fishing, wildlife
+observation or photography, environmental education, and interpretation,
+can increase visitor appreciation and knowledge of natural resources
+(U.S. Fish and Wildlife Service
+\protect\hyperlink{ref-USFWS2011}{2011}). The survey collected data on
+recreation participation at this refuge during the past 12 months and
+the primary activity of each visitor when they were contacted about the
+survey. Understanding recreation participation can help to guide the
+allocation of resources, including staff and infrastructure, to ensure
+visitors have quality, memorable experiences. Understanding visitor uses
+of the refuge can also aid in developing programs that facilitate
+meaningful interactions between visitors and refuge staff. Finally, such
+information can also help to pinpoint locations on the refuge where
+potential interactions over refuge uses may be perceived as incompatible
+by different visitor groups. Anticipating and preventing any social
+conflicts over refuge use can help create a quality experience and
+foster personal and emotional connections to the refuge and its
+resources (U.S. Fish and Wildlife Service
+\protect\hyperlink{ref-USFWS2011}{2011}).
+\EndKnitrBlock{preamble1}
+
+Refuge visitors were asked about twenty different activities they may
+have participated in at this refuge during the 12 months prior to
+completing the survey as well as the primary activity they participated
+in during this visit. Frequencies of all twenty activities are included
+in (AppendixB).
+
+\begin{itemize}
+\tightlist
+\item
+  Wildlife observation (74\%)
+\item
+  Hiking/Walking (69\%)
+\item
+  Bird watching (57\%)
+\end{itemize}
+
+Refuge visitors were also given the opportunity to write-in other
+activities if they were not included in the list of twenty activities.
+The full list of `other reported activities are included in (AppendixC).
+Some of the unique activities reported at this refuge included:
+
+\begin{itemize}
+\tightlist
+\item
+  Wildlife observation (74\%)
+\item
+  Hiking/Walking (69\%)
+\item
+  Bird watching (57\%)
+\end{itemize}
+
+\subsection{Primary Activities}\label{primary-activities}
+
+The primary activities reported at this refuge included:
+
+\begin{itemize}
+\tightlist
+\item
+  Hiking/Walking (28\%)
+\item
+  Bird watching (16\%)
+\item
+  Wildlife observation (13\%)
+\end{itemize}
+
+\section{Visiting This Refuge}\label{visiting-this-refuge}
+
+\BeginKnitrBlock{preamble1}
+Understanding trends in overall visitation to this refuge provides
+refuge staff with key information about its existing audiences.
+Specifically, the survey explored the number of times visitors have been
+to this refuge during the past year, including during which seasons, and
+the trips taken to other refuges or other public lands for the same
+primary activities. In combination with other trip characteristics
+(e.g., trip purpose, time spent traveling to and visiting the refuge),
+such information can be used to better understand activity and site
+fidelity (i.e., likelihood of repeating specific past behavior) or
+substitutability (i.e., likelihood of doing another activity or visiting
+somewhere else to participate in a preferred activity). Such information
+regarding site fidelity in particular can also help to identify the
+success of existing communications at enticing different groups of
+people to visit the refuge. Information on seasonality of visits can
+help refuge staff anticipate when certain recreational activities or
+programming is in high demand, an important informational need for
+allocating appropriate resources.
+\EndKnitrBlock{preamble1}
+
+Some of the key questions related to visitation habits to this refuge
+included:
+
+\begin{itemize}
+\tightlist
+\item
+  Which of the following best describes your most recent visit to this
+  refuge?
+\item
+  How many people were in your personal group, including yourself, on
+  your most recent visit to this refuge?
+\item
+  Approximately how many hours/minutes (one-way) did you travel from
+  your home to this refuge?
+\end{itemize}
+
+\subsection{Visits to refuge}\label{visits-to-refuge}
+
+In the last 12 months, how many times have you visited this refuge
+(including this visit)?
+
+\begin{itemize}
+\tightlist
+\item
+  35\% of visitors visited the refuge only once in the last 12 months
+\item
+  11\% of visitors visited the refuge two times in the last 12 months
+\end{itemize}
+
+\subsection{Visits to other national wildlife
+refuges}\label{visits-to-other-national-wildlife-refuges}
+
+In the last 12 months, how many times have you visited other national
+wildlife refuges?
+
+\begin{itemize}
+\tightlist
+\item
+  74\% of visitors did not visit any other national wildlife refuges in
+  the last 12 months
+\item
+  21\% of visitors visited other national wildlife refuges only once in
+  the last 12 months
+\item
+  25\% of visitors visited other national wildlife refuges two times in
+  the last 12 months
+\end{itemize}
+
+\subsection{Visits to other public
+lands}\label{visits-to-other-public-lands}
+
+In the last 12 months, how many times have you visited other public
+lands (for example, national or state parks) to participate in the same
+primary activity as this visit?
+
+\begin{itemize}
+\tightlist
+\item
+  28\% of visitors did not visit any other public lands
+\item
+  9\% of visitors visited other public lands only once
+\item
+  14\% of visitors visited other public lands two times
+\end{itemize}
+
+\chapter{Communicating Refuge Information}\label{comm}
+
+\BeginKnitrBlock{preamble1}
+Effective communication with the public is critical for managing and
+enhancing visitor experiences. Additionally, the Refuge System's success
+in reaching new and diverse audiences depends on its ability to keep
+pace with communication trends (U.S. Fish and Wildlife Service
+\protect\hyperlink{ref-USFWS2016a}{2016}\protect\hyperlink{ref-USFWS2016a}{a}).
+Understanding how visitors both seek out and share information about the
+refuge and its resources using various communication channels (e.g.,
+printed information, friends and family, websites, social media) can
+inform the refuge's approach to communicating with visitors at different
+points of their trips (before, during and after). Information in this
+section can be used to assess changes in what sources are used as well
+as how visitors perceive the helpfulness of Service communications over
+time. Refuge staff can use communication channels preferred by visitors
+to inform the public about the Refuge System's mission and
+accomplishments.
+\EndKnitrBlock{preamble1}
+
+\section{Learning about This Refuge}\label{learning-about-this-refuge}
+
+The survey asked which information sources visitors used to learn about
+the refuge and its resources and the degree to which each information
+source was helpful. Visitors across different ages may use different
+information sources to learn about this refuge and its resources. The
+full list of information sources presented to visitors is contained in
+(AppendixB).
+
+\begin{itemize}
+\tightlist
+\item
+  Print
+\item
+  Digital
+\end{itemize}
+
+\section{Helpfulness of Information
+Sources}\label{helpfulness-of-information-sources}
+
+Among all visitors, the following information sources were most
+frequently rated as very or extremely helpful:
+
+\begin{itemize}
+\tightlist
+\item
+  Personal knowledge from previous visits (86\%)
+\item
+  Refuge employees or volunteers (72\%)
+\item
+  Kiosks/displays/exhibits at this refuge (68\%)
+\end{itemize}
+
+Visitors under the age of 35 most often used these information sources
+to learn about the refuge:
+
+\begin{itemize}
+\tightlist
+\item
+  Personal knowledge from previous visits (80\%)
+\item
+  Web-based map (70\%)
+\item
+  Refuge employees or volunteers (67\%)
+\end{itemize}
+
+Visitors over the age of 35 most often used these information sources to
+learn about the refuge:
+
+\begin{itemize}
+\tightlist
+\item
+  Personal knowledge from previous visits (87\%)
+\item
+  Refuge employees or volunteers (74\%)
+\item
+  Kiosks/displays/exhibits at this refuge (68\%)
+\end{itemize}
+
+\chapter{Visitor Opinions about this Refuge}\label{opin}
+
+\BeginKnitrBlock{preamble1}
+A baseline understanding of visitor experiences provides a framework
+from which the Refuge System can monitor trends in visitor experiences
+and opinions overtime. Obtaining such a baseline is integral to the
+Service's Inventory and Monitoring Initiative (U.S. Fish and Wildlife
+Service \protect\hyperlink{ref-USFWS2017}{2017}), as well as warranted
+if the Service is to remain relevant in the face of changing
+demographics and wildlife-related interests (U.S. Fish and Wildlife
+Service \protect\hyperlink{ref-USFWS2014}{2014}). As part of the survey,
+visitors rated both the importance of different serv, facilities, and
+opportunities on the refuge, and their satisfaction with each of the
+things applicable to their refuge experience. Certain services or
+recreational opportunities may be more or less central to the experience
+of different segments of the visitor population, and the potential for
+highly varied importance ratings needs to be considered when viewing the
+satisfaction results of this analysis. For example, hunters may place
+more importance on hunting opportunities and amenities, while
+school-group leaders may place more importance on
+educational/informational displays. Thus, a specialized user group's
+importance of and satisfaction with a particular attribute may differ
+from the overall importance of and satisfaction with that same attribute
+for the full sample of visitors summarized in this report.
+\EndKnitrBlock{preamble1}
+
+\section{Overall Satisfaction}\label{overall-satisfaction}
+
+The vast majority of surveyed visitors were satisfied with the refuge's
+job of conserving fish, wildlife, and their habitats (83\%) and the
+quality of the overall experience when visiting this refuge (87\%). The
+next step is to compare the importance and satisfaction ratings for
+visitor services provided by refuges in order to identify how well
+different services meet visitor expectations.
+
+refSatTitle
+
+\section{Recreational Opportunities}\label{recreational-opportunities}
+
+\subsection{Importance of Recreational
+Opportunities}\label{importance-of-recreational-opportunities}
+
+\begin{figure}
+\centering
+\includegraphics{nvs-report_files/figure-latex/recImp-1.pdf}
+\caption{\label{fig:recImp}How important are the recreation opportunities?}
+\end{figure}
+
+\subsection{Satisfaction with Recreational
+Opportunities}\label{satisfaction-with-recreational-opportunities}
+
+\begin{figure}
+\centering
+\includegraphics{nvs-report_files/figure-latex/recSat-1.pdf}
+\caption{\label{fig:recSat}How satisfied are you with the recreation
+opportunities?}
+\end{figure}
+
+\section{Services and Facilities}\label{services-and-facilities}
+
+\subsection{Importance of Facilities and
+Services}\label{importance-of-facilities-and-services}
+
+servicesImpTitle
+\includegraphics{nvs-report_files/figure-latex/servicesImp-1.pdf}
+
+\subsection{Satisfaction with Facilities and
+Services}\label{satisfaction-with-facilities-and-services}
+
+servSatTitle
+\includegraphics{nvs-report_files/figure-latex/servSatPlot-1.pdf}
+
+\section{Feeling Safe and Welcome}\label{feeling-safe-and-welcome}
+
+\BeginKnitrBlock{preamble1}
+People who rarely participate in wildlife-dependent recreation or do not
+regularly visit refuges may have different perspectives on the role of a
+refuge and its resources in everyday life compared to people who
+regularly visit a refuge or frequently participate in wildlife-dependent
+recreation. Visitors, particularly those new to `being in nature', may
+have a sense of danger when outdoors or general discomfort associated
+with the unknown (U.S. Fish and Wildlife Service
+\protect\hyperlink{ref-USFWS2014}{2014}). Additionally, some people may
+perceive the refuge to lack materials or programs accessible and
+relevant to their interests, or may even believe that natural places are
+unwelcoming because of historical associations with the outdoors. Thus,
+an understanding of how visitors rate their feelings of being safe and
+welcome on the refuge can provide important baseline information to
+refuge staff when identifying potential areas for improvement and
+evaluating how future efforts may enhance feelings of being safe and
+welcome at refuges over time.
+\EndKnitrBlock{preamble1}
+
+safeTitle
+\includegraphics{nvs-report_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\chapter{Transportation at this Refuge}\label{trans}
+
+\BeginKnitrBlock{preamble1}
+Transportation networks connect local communities to refuges and are the
+bedrock of all experiences that occur on refuges. Visitors access
+refuges by car, by boat, by bike, and by plane. The Service works to
+ensure that the roads, trails and parking areas are welcoming and safe
+for visitors of all abilities.These networks include roads, bridges,
+foot pathways, entrances, and the entire suite of transportation
+features critical to visitor access and mobility. While many visitors
+arrive at the refuge in private vehicles, other options (including
+buses, trams, watercraft, and bicycles) are increasingly becoming a part
+of the visitor experience. Thus, there is a critical need to know how
+visitors perceive the safety of using these different transportation
+options, as well as different transportation features (e.g., bridges,
+roadways, entrances/exists) as part of their experience. The survey
+asked visitors to rate both the importance and current satisfaction with
+existing transportation-related features, as well as methods of
+transportation visitors used to get to and around the refuge during
+their visit. This information can help to identify if transportation
+improvements could be made that would further enhance visitor access
+and, ultimately, their overall experiences (U.S. Fish and Wildlife
+Service \protect\hyperlink{ref-USFWS2011}{2011}). Additionally,
+transportation alternatives within the Refuge System (Krechmer et al.
+\protect\hyperlink{ref-krechmer2001}{2001}; Volpe Center
+\protect\hyperlink{ref-volpe2010}{2010}) could help to improve refuge
+conditions (e.g., quality of air, water, and habitat); thus, the survey
+asked visitors to note different transportation methods used during
+their trips, and their likelihood of using alternative transportation at
+refuges in the future.
+\EndKnitrBlock{preamble1}
+
+\section{Travel To This Refuge}\label{travel-to-this-refuge}
+
+The key mode of transportation used by visitors to travel to this refuge
+was Private vehicle without trailer (86\%; fig. 11). The key mode of
+transportation used by visitors to travel around this refuge was Foot
+(46\%).
+
+\textbf{Figure 11.} Modes of transportation used by visitors to travel
+to and around Dungeness National Wildlife Refuge during this visit
+(\emph{n} = \#\#\#). See Appendix C for a listing of ``other'' modes of
+transportation. Modes of transportation with a proportion smaller than
+1.5\% for both items were excluded; see Appendix B for frequencies of
+all items.
+
+\section{Transportation-related
+Features}\label{transportation-related-features}
+
+A majority of visitors to Dungeness National Wildlife Refuge thought
+transportation-related items were important Figure \ref{fig:trans-imp}.
+They were most satisfied with x and least satisfied with y Figure
+\ref{fig:trans-sat}.
+
+\begin{figure}
+\centering
+\includegraphics{nvs-report_files/figure-latex/trans-imp-1.pdf}
+\caption{\label{fig:trans-imp}Importance of transportation-related features
+when visiting this refuge}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{nvs-report_files/figure-latex/trans-sat-1.pdf}
+\caption{\label{fig:trans-sat}Rate how satisfied you are with the way this
+refuge is managing each feature}
+\end{figure}
+
+\section{Alternative Transportation
+Options}\label{alternative-transportation-options}
+
+One goal of the Transportation Program is to provide alternative modes
+and means of access to FWS managed lands as a way to enhance the
+visitation experience. ``Access to FWS managed lands, where compatible
+with Station purpose, should be available to visitors via multiple forms
+of transportation, including public transit, bicycle, and walking.
+Alternative forms of transportation can help reduce visitors' carbon
+footprints, which in turn may have long term positive affects for the
+natural resources we manage. Planning and building to accommodate
+sustainable transportation options can help to achieve the FWS mission
+(U.S. Fish and Wildlife Service
+\protect\hyperlink{ref-USFWS2016b}{2016}\protect\hyperlink{ref-USFWS2016b}{b}).
+
+Of six alternative transportation options listed on the survey, a
+majority of refuge visitors were likely to use the following at
+Dungeness National Wildlife Refuge in the future Figure
+\ref{fig:alt-trans}:
+
+\begin{itemize}
+\tightlist
+\item
+  Pedestrian paths for access to this refuge from the local community
+  (23\%)
+\item
+  Bus or tram that provides a guided tour (15\%)
+\item
+  Bike-share program that offers bicycles for rent on or near this
+  refuge (14\%)
+\end{itemize}
+
+A majority of visitors indicated they were not likely to use Public
+transit systems that stops at or near this refuge.
+
+\begin{figure}
+\centering
+\includegraphics{nvs-report_files/figure-latex/alt-trans-1.pdf}
+\caption{\label{fig:alt-trans}How likely visitors would be to use each
+transportation option at this refuge if it were available in the
+future.}
+\end{figure}
+
+\chapter{Visitor Spending in the Local Communities}\label{econ}
+
+\BeginKnitrBlock{preamble1}
+Tourists tend to buy a range of goods and services while visiting an
+area, such as a city or town located adjacent to a refuge. Major
+expenditure categories include lodging, food, supplies, and gasoline.
+Spending associated with refuge visitation can generate considerable
+economic benefits for local communities. For example, more than 46.5
+million visits were made to refuges in fiscal year 2011, and generated
+\$2.4 billion in sales, more than 35,000 jobs, and \$792.7 million in
+employment income in regional economies (Carver and Caudill
+\protect\hyperlink{ref-carver2013}{2013}). Information on the amount and
+types of visitor expenditures in relation to particular recreation
+activities (e.g., hunting, fishing, wildlife observation) has further
+illustrated the economic importance of recreation (U.S. Fish and
+Wildlife Service and U.S. Census Bureau
+\protect\hyperlink{ref-USFWS2018}{2018}), which are the primary reasons
+for which visitors seek out refuges and related resources. Finally,
+visitor expenditure information can be used to determine the potential
+economic impact of proposed refuge management alternatives into the
+future.
+\EndKnitrBlock{preamble1}
+
+\section{Visitor Spending in the Local
+Communities}\label{visitor-spending-in-the-local-communities}
+
+Visitors that live within the local 50-mi area of a refuge typically
+have different spending patterns than those that travel from longer
+distances. During the two sampling periods, 62\% of surveyed visitors to
+Dungeness National Wildlife Refuge indicated that they live within the
+local 50-mi area while nonlocal visitors (30\%) stayed in the local
+area, on average, for NA days. (tab:expendTable) shows summary
+statistics for local and nonlocal visitor expenditures in the local
+communities and at the refuge, with expenditures reported on a per
+person per day basis. During the two sampling periods, nonlocal visitors
+(\emph{n} = 30) spent an average of \$140.17 per person per day and
+local visitors spent an average of \$105.91 per person per day in the
+local area. It is important to note that summary statistics based on a
+small sample size (n \textless{} 30) may not provide a reliable
+representation of that population. Several factors should be considered
+when estimating the economic importance of refuge-visitor spending in
+the local communities. These factors include the amount of time spent at
+the refuge, influence of the refuge on the visitors' decision to take
+this trip, and the representativeness of primary activities of the
+sample of surveyed visitors compared to the general population.
+Controlling for these factors is beyond the scope of the summary
+statistics presented in this report.
+
+Table: \label{tab:spend-table}
+
+Visitors
+
+n
+
+Median
+
+Mean
+
+SD
+
+Min
+
+Max
+
+2
+
+0
+
+NA
+
+NaN
+
+NA
+
+NA
+
+NA
+
+Local
+
+2140
+
+12.50
+
+105.91
+
+1371.08
+
+0
+
+43783.00
+
+Nonlocal
+
+1183
+
+68.33
+
+140.17
+
+705.55
+
+0
+
+23166.67
+
+1 n = number of visitors who answered both locality and expenditure
+questions.
+
+{Note: }
+
+ For each respondent, reported expenditures were divided by the number
+of persons in their group that shared expenses in order to determine the
+spending per person per trip. This number was then divided by the number
+of days spent in the local area to determine the spending per person per
+day for each respondent. For respondents who reported spending less than
+one full day in the local community, trip length was set equal to one
+day. These visitor spending estimates are appropriate for the sampling
+periods selected by refuge staff (see {[}Table{]} for sampling period
+dates and {[}Figure{]} for the primary visitor activities in which
+people participated), and may not be representative of the total
+population of visitors to this refuge.
+
+Figure: \label{fig:spend-fig}
+\includegraphics{nvs-report_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\chapter{Sharing Refuge Experiences Via Social Media}\label{smed}
+
+\BeginKnitrBlock{preamble1}
+Around 70\% of Americans use social media to connect with one another,
+engage with news content, share information and entertain themselves
+(Smith and Anderson \protect\hyperlink{ref-smith2018}{2018}).
+Understanding the role of social media can expand the reach of Service
+communication efforts and direct ways to better reach the next
+generation of refuge visitors, a major emphasis of the Service's
+recommendations for Conserving the Future (U.S. Fish and Wildlife
+Service \protect\hyperlink{ref-USFWS2011}{2011}). Building and
+maintaining an official presence on social media can also enhance
+two-way conversations between visitors and refuge staff, a critical
+element of the Service's Communication's Strategy (U.S. Fish and
+Wildlife Service
+\protect\hyperlink{ref-USFWS2016a}{2016}\protect\hyperlink{ref-USFWS2016a}{a}).
+Two-way communication may also help to enhance trust of the agency by
+highlighting the range of visitor experiences that are welcomed and
+stories of refuges experiences from the perspective of
+culturally-relevant groups (U.S. Fish and Wildlife Service
+\protect\hyperlink{ref-USFWS2014}{2014}). Finally, a social media
+presence can further generate awareness of the refuge and its resources
+among audiences that do not use, or did not otherwise learn about the
+refuge through traditional advertising outlets.
+
+In an increasingly urbanized society, social media is how a lot of
+younger generations are getting introduced to outdoor spaces for the
+first time.
+\EndKnitrBlock{preamble1}
+
+Visitors were asked if they used social media to share their refuge
+experience with others. Potential visitors may find these shared posts
+when searching for information online about the refuge, specific
+locations, or particular wildlife - or simply when searching about their
+friend or family member's activities; thus, social media posts can serve
+as a virtual ``word of mouth'' method of increasing awareness about the
+refuge to the visitor's network and beyond.
+
+More/Less than half of visitors (\texttt{r}``XX\%''`) reported using
+social media to share their refuge experience with other people.
+
+The full list of social media outlets presented to visitors is contained
+in Appendix B.
+
+\subsection{Social Media Sharing by Age
+Group}\label{social-media-sharing-by-age-group}
+
+While Millennials have often led older Americans in their adoption and
+use of technology, including social media, there has been significant
+growth in tech adoption in recent years among older generations. More
+than half of Baby Boomers say they use social media.
+
+Among all visitors, the following social media outlets were used most
+often to share refuge experiences:
+
+\begin{itemize}
+\tightlist
+\item
+  None (47\%)
+\item
+  Facebook (39\%)
+\item
+  Instagram (14\%)
+\end{itemize}
+
+Visitors under the age of 35 most often used these social media outlets
+to share refuge experiences:
+
+\begin{itemize}
+\tightlist
+\item
+  None (47\%)
+\item
+  Facebook (39\%)
+\item
+  Instagram (14\%)
+\end{itemize}
+
+Visitors over the age of 35 most often used these social media outlets
+to share refuge experiences:
+
+\begin{itemize}
+\tightlist
+\item
+  None (47\%)
+\item
+  Facebook (39\%)
+\item
+  Instagram (14\%)
+\end{itemize}
+
+\chapter{Enhancing Future Visits to National Wildlife
+Refuges}\label{futvis}
+
+\section{Forecasting Future Recreation Demand at This
+Refuge}\label{forecasting-future-recreation-demand-at-this-refuge}
+
+Gaining a sense of what would encourage visitors to return (or what may
+prevent them from returning) would be useful information for managers,
+planners, and visitor services personnel. For example, some visitors may
+prefer increased infrastructure, while others may want more access to
+opportunities on the refuge. However, any management action aimed at
+increasing recreation participation should be considered in relation to
+possible effects on different visitor groups. For example, visitors may
+report that more infrastructure would lead to increased participation in
+a particular primary activity (e.g., birdwatching, fishing), but that
+particular increased participation could also result in others feeling
+crowded, subsequently reducing their participation. Thus, results in
+this section should be considered as part of a network of potential
+decisions that could affect different visitor groups disproportionally
+if not carefully considered in full.
+
+\includegraphics{nvs-report_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\section{Visitor Programs}\label{visitor-programs}
+
+Offering programming that is equitable to various groups of visitors at
+refuges, whether located in urban areas or elsewhere, will help to build
+a stronger conservation constituency into the future (U.S. Fish and
+Wildlife Service \protect\hyperlink{ref-USFWS2014}{2014}). Creation and
+administration of different types of programs can encourage people to
+continue visiting the refuge, and further build relationships and
+encourage visitation among new audiences. These opportunities can focus
+a variety of interests and topics ranging from skill-building, specific
+youth programs, family-based or multi-generational programs, or
+showcasing local or unique culture. Programs that focus on the interests
+of these varied audiences in order to foster stronger connections to the
+refuge and its resources may ultimately help to enhance conservation
+goals.
+
+YOUTHPROG FAMILYPROG SKILLPROG LOCALPROG ARTPROG ACCESSPROG OTHERPROG 1
+No No No No No No No 2 Yes No Yes No No No No 3 No No No No No No No 4
+No Yes No No No No No 5 No No No No No No No 6 Yes No Yes No No Yes No
+NOPROG 1 Yes 2 No 3 Yes 4 No 5 Yes 6 No {[}1{]} 8 `data.frame': 4078
+obs. of 8 variables: \$ Programs that engage youth : Factor w/ 2 levels
+``No'',``Yes'': 1 2 1 1 1 2 1 2 1 1 \ldots{} \$ Programs that focus on
+family/multiple-generations : Factor w/ 2 levels ``No'',``Yes'': 1 1 1 2
+1 1 1 2 1 1 \ldots{} \$ Programs that teach skills to visitors : Factor
+w/ 2 levels ``No'',``Yes'': 1 2 1 1 1 2 1 1 1 1 \ldots{} \$ Programs
+that highlight unique local culture : Factor w/ 2 levels ``No'',``Yes'':
+1 1 1 1 1 1 1 2 2 1 \ldots{} \$ Programs that focus on creative pursuits
+: Factor w/ 2 levels ``No'',``Yes'': 1 1 1 1 1 1 1 2 1 1 \ldots{} \$
+Programs that support people with accessibility concerns: Factor w/ 2
+levels ``No'',``Yes'': 1 1 1 1 1 2 1 1 1 1 \ldots{} \$ Other (specify) :
+Factor w/ 2 levels ``No'',``Yes'': 1 1 1 1 1 1 1 1 1 1 \ldots{} \$ I do
+not typically participate in refuge programs : Factor w/ 2 levels
+``No'',``Yes'': 2 1 2 1 2 1 2 1 1 2 \ldots{} Programs that engage youth
+1 No 2 Yes 3 No 4 No 5 No 6 Yes Programs that focus on
+family/multiple-generations 1 No 2 No 3 No 4 Yes 5 No 6 No Programs that
+teach skills to visitors 1 No 2 Yes 3 No 4 No 5 No 6 Yes Programs that
+highlight unique local culture 1 No 2 No 3 No 4 No 5 No 6 No Programs
+that focus on creative pursuits 1 No 2 No 3 No 4 No 5 No 6 No Programs
+that support people with accessibility concerns Other (specify) 1 No No
+2 No No 3 No No 4 No No 5 No No 6 Yes No I do not typically participate
+in refuge programs 1 Yes 2 No 3 Yes 4 No 5 Yes 6 No {[}1{]} 8 Item No 1
+Programs that engage youth 77.90584 2 Programs that focus on
+family/multiple-generations 79.45071 3 Programs that teach skills to
+visitors 68.09711 4 Programs that highlight unique local culture
+73.24669 5 Programs that focus on creative pursuits 83.69299 6 Programs
+that support people with accessibility concerns 87.10152 7 Other
+(specify) 91.85875 8 I do not typically participate in refuge programs
+52.79549 Yes 1 22.094164 2 20.549289 3 31.902894 4 26.753310 5 16.307013
+6 12.898480 7 8.141246 8 47.204512
+\includegraphics{nvs-report_files/figure-latex/programs-1.pdf}
+
+`data.frame': 32 obs. of 4 variables: \$ Group: Factor w/ 4 levels
+``18-34 years'',..: 1 1 1 1 1 1 1 1 2 2 \ldots{} \$ Item : Factor w/ 8
+levels ``Programs that engage youth'',..: 1 2 3 4 5 6 7 8 1 2 \ldots{}
+\$ No : num 70.9 76.7 55.6 63.3 72.3 \ldots{} \$ Yes : num 29.1 23.3
+44.4 36.7 27.7 \ldots{}
+\includegraphics{nvs-report_files/figure-latex/progAge-1.pdf}
+`data.frame': 8 obs. of 6 variables: \$ Item : Factor w/ 8 levels ``I do
+not typically participate in refuge programs'',..: 1 8 6 3 5 4 7 2 \$
+low : num 52.8 68.1 73.2 77.9 79.5 \ldots{} \$ neutral: num 0 0 0 0 0 0
+0 0 \$ high : num 47.2 31.9 26.8 22.1 20.5 \ldots{} \$ mean : num 1.47
+1.32 1.27 1.22 1.21 \ldots{} \$ sd : num 0.499 0.466 0.443 0.415 0.404
+\ldots{} Item high 8 I do not typically participate in refuge programs
+47 3 Programs that teach skills to visitors 32 4 Programs that highlight
+unique local culture 27 1 Programs that engage youth 22 2 Programs that
+focus on family/multiple-generations 21 5 Programs that focus on
+creative pursuits 16 6 Programs that support people with accessibility
+concerns 13 7 Other (specify) 8
+
+\chapter{Conclusion}\label{concl}
+
+These individual refuge results provide a summary of trip
+characteristics and experiences of a sample of visitors to Dungeness
+National Wildlife Refuge during 2018 and are intended to inform
+decision-making efforts related to visitor services and transportation
+at this refuge. Additionally, the results from this survey can be used
+to inform planning efforts, such as a refuge's Comprehensive
+Conservation Plan. With an understanding of visitors' trip and activity
+characteristics, and visitor-satisfaction ratings with existing
+offerings, refuge managers are able to make informed decisions about
+possible modifications (whether a reduction or enhancement) to visitor
+facilities, services, or recreational opportunities. This information
+can help managers gauge demand for refuge opportunities and inform both
+implementation and communication strategies. Similarly, an awareness of
+visitors' satisfaction ratings with various refuge offerings can help
+determine if potential areas of concern need to be investigated further.
+As another example of the utility of these results, community relations
+may be improved or bolstered through an understanding of the value of
+the refuge to visitors, whether that value is attributed to an
+appreciation of the refuge's offerings, enjoyment of its recreational
+activities, or spending contributions of nonlocal visitors to the local
+economy. Such data about visitors and their experiences, in conjunction
+with an understanding of biophysical data on the refuge and its
+resources, can ensure that management decisions are consistent with the
+Refuge System mission while fostering a continued public interest in
+these special places.
+
+More information about the national visitor survey, including reports
+for all participating refuges, are available at
+go.osu.edu/refugereports.
+
+More information regarding the Service's Human Dimensions Branch can be
+found at
+\url{https://www.fws.gov/Refuges/NaturalResourcePC/humanDimensions.html}.
+
+\appendix
+
+
+\chapter*{Appendix A. Project
+Methods}\label{appendix-a.-project-methods}
+\addcontentsline{toc}{chapter}{Appendix A. Project Methods}
+
+\section{Selecting Participating
+Refuges}\label{selecting-participating-refuges}
+
+The national visitor survey was conducted from March 2018 to April 2019
+on 37 refuges across the Refuge System (tab:refuge-list). Each refuge
+was selected for participation by regional office Visitor Services
+Chiefs.
+
+\begin{longtable}[]{@{}l@{}}
+\caption{\label{tab:refuge-list}}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+\textbf{Refuges}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+\textbf{Refuges}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\textbf{Pacific Region (R1)}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Billy Frank Jr. Nisqually NWR (WA)Dungeness NWR (WA)Guam NWR (GU)Hanalei
+NWR (HI)Kilauea Point NWR (HI)Ridgefield NWR (WA)Steigerwald Lake NWR
+(WA)Tualatin River NWR (OR)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\textbf{Southwest Region (R2)}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Balcones Canyonlands NWR (TX) Hagerman NWR (TX)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\textbf{Midwest Region (R3)}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Crab Orchard NWR (IL) Loess Bluffs NWR (MO) Ottawa NWR (OH) Sherburne
+NWR (MN) Shiawassee NWR (MI)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\textbf{Southeast Region (R4)}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+A.R.M. Loxahatchee NWR (FL) Bayou Sauvage NWR (LA) Big Branch Marsh NWR
+(LA) Cache River NWR (AR) J.N. Ding Darling NWR (FL) Okefenokee NWR (GA)
+Pinckney Island NWR (SC) Sam D. Hamilton Noxubee NWR (MS) Tennessee NWR
+(TN)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\textbf{Northeast Region (R5)}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Blackwater NWR (MD) Canaan Valley NWR (WV) Great Meadows NWR (MA) John
+Heinz NWR at Tinicum (PA) Ohio River Islands NWR (PA) Prime Hook NWR
+(DE) Sachuest Point NWR (RI)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\textbf{Mountain-Prairie Region (R6)}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Kirwin NWR (KS) Rainwater Basin WMD (NE) Sullys Hill National Game
+Preserve (ND)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\textbf{Alaska Region (R7)}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+None in 2018\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\textbf{Pacific Southwest Region (R8)}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+Desert NWR (NV) San Diego NWR (CA) San Diego Bay NWR (CA)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Developing the Survey
+Instrument}\label{developing-the-survey-instrument}
+
+Researchers at OSU developed the survey in consultation with the Service
+Headquarters Office, managers, planners, and visitor services
+professionals. The survey was peer-reviewed by academic and government
+researchers. The survey and associated methodology were approved by the
+Office of Management and Budget (OMB control \#: 0596-0236; expiration
+date: 11/30/2020).
+
+\section{Contacting Visitors}\label{contacting-visitors-1}
+
+Refuge staff identified two separate 14-day sampling periods, and one or
+more locations at which to sample, that best reflected the diversity of
+use and specific visitation patterns of each participating refuge. A
+standardized sampling schedule was created for all refuges that included
+eight randomly selected sampling shifts during each of the two sampling
+periods. Sampling shifts were four (hr) time bands, stratified across AM
+and PM as well as weekend and weekdays. In coordination with refuge
+staff, any necessary customizations were made to the standardized
+schedule to accommodate the identified sampling locations and to address
+specific spatial and temporal patterns of visitation.
+
+Twenty visitors (18 years of age or older) per sampling shift were
+systematically selected, for a total of 400 willing participants per
+refuge (or 200 per sampling period) to ensure an adequate sample of
+completed surveys. When necessary, shifts were moved, added, or extended
+to alleviate logistical limitations (for example, weather or low
+visitation at a particular site) in an effort to reach target numbers.
+
+American Conservation Experience Interns and/or USFWS Human Dimensions
+staff (survey recruiters) contacted visitors onsite following a protocol
+provided by OSU that was designed to obtain a representative sample.
+Instructions included contacting visitors across the entire sampling
+shift (for example, every nth visitor for dense visitation, as often as
+possible for sparse visitation) and contacting only one person per
+group. Visitors were informed of the survey effort, given a token
+incentive (for example, a small magnet or temporary tattoo), and asked
+to participate. Willing participants provided their name, mailing
+address, and preference for language (English or Spanish). Survey
+recruiters were also instructed to record any refusals and then proceed
+with the sampling protocol
+
+All visitors that agreed onsite to fill out a survey received the same
+sequence of correspondence. This approach allowed for an assessment of
+visitors' likelihood of completing the survey by their preferred survey
+mode (Sexton, Miller, and Dietsch
+\protect\hyperlink{ref-sexton2011}{2011}). Researchers at OSU sent the
+following materials to all visitors agreeing to participate who had not
+yet completed a survey at the time of each mailing (Dillman, Smyth, and
+Christian \protect\hyperlink{ref-dillman2014}{2014}):
+
+\begin{itemize}
+\tightlist
+\item
+  A postcard mailed within 10 days of the initial onsite contact
+  thanking visitors for agreeing to participate in the survey and
+  inviting them to complete the survey online.
+\item
+  A packet mailed 14 days later consisting of a cover letter, survey,
+  and postage paid envelope for returning a completed paper survey.
+\item
+  A reminder postcard mailed 14 days later.
+\item
+  A second packet mailed 7 days later consisting of another cover
+  letter, survey, and postage paid envelope for returning a completed
+  paper survey.
+\end{itemize}
+
+Each mailing included instructions for completing the survey online, so
+visitors had an opportunity to complete an online survey with each
+mailing. Those visitors indicating a preference for Spanish were sent
+Spanish versions of all correspondence (including the survey). Online
+survey data were exported and paper survey data were entered into
+Microsoft Excel using a standardized survey codebook and data entry
+procedure. All survey data were analyzed using \emph{Statistical Package
+for the Social Sciences} (SPSS, v.23) and R software\footnote{Any use of
+  trade, firm, or product names is for descriptive purposes only and
+  does not imply endorsement by the U.S. Government.}.
+
+\section{Interpreting the Results}\label{interpreting-the-results-1}
+
+The extent to which these results accurately represent the total
+population of visitors to this refuge is dependent on the number of
+visitors who completed the survey (sample size) and the ability of the
+variation resulting from that sample to reflect the beliefs and
+interests of different visitor user groups (Scheaffer and others, 1996).
+The composition of the sample is dependent on the ability of the
+standardized sampling protocol for this study to account for the spatial
+and temporal patterns of visitor use unique to each refuge. Spatially,
+the geographical layout and public-use infrastructure varies widely
+across refuges. Some refuges can be accessed only through a single
+entrance, while others have multiple unmonitored access points across
+large expanses of land and water. As a result, the degree to which
+sampling locations effectively captured spatial patterns of visitor use
+will vary from refuge to refuge. Temporally, the two 14-day sampling
+periods may not have effectively captured all of the predominant visitor
+uses/activities on some refuges during the course of a year, which may
+result in certain survey measures such as visitors' self-reported
+``primary activity during their visit'' reflecting a seasonality bias.
+Results contained within this report may not apply to visitors during
+all times of the year or to visitors who did not visit the survey
+locations.
+
+In this report, visitors who responded to the survey are referred to
+simply as ``visitors.'' However, when interpreting the results for
+Dungeness National Wildlife Refuge, any potential spatial and temporal
+sampling limitation specific to this refuge needs to be considered when
+generalizing the results to the total population of visitors. For
+example, a refuge that sampled during a special event (for example,
+birding festival) held during the spring may have contacted a higher
+percentage of visitors who traveled greater than 50 miles (mi) to get to
+the refuge than the actual number of these people who would have visited
+throughout the calendar year (that is, oversampling of nonlocals).
+Another refuge may not have enough nonlocal visitors in the sample to
+adequately represent the beliefs and opinions of that group type. If the
+sample for a specific group type (for example, nonlocals, hunters,
+visitors who paid a fee) is too low (\emph{n} \&lt; 30), a warning is
+included in the text. Finally, the term ``this visit'' is used to
+reference the visit during which people were contacted to participate in
+the survey.
+
+\section{Non-Response Bias}\label{non-response-bias}
+
+Non-response bias is the bias that results when respondents differ in
+meaningful ways from nonrespondents. Non-response bias affects the
+ability to generalize survey results, to some degree and in some ways,
+from the sample to the study's target population (Dillman, Smyth, and
+Christian \protect\hyperlink{ref-dillman2014}{2014}, Salant and Dillman
+(\protect\hyperlink{ref-salant1994}{1994})). If non-respondents are
+found to differ from respondents in meaningful ways, care should be
+taken when interpreting survey responses, as they may overrepresent some
+segments of the target population to some degree, and may
+under-represent other segments of the population to some degree.
+
+To check for non-response bias, this study used answers to three
+non-response bias questions and three observable characteristics of the
+contacted visitor to compare respondents with nonrespondents. The
+following questions and observations were used for evaluation of
+non-response bias: - What is your primary activity at the refuge today?
+- Do you live within 50 miles of this refuge? - What year were you born?
+
+In addition to the three non-response bias questions, the following
+three characteristics were observed and recorded: - Gender of the person
+in the group who was first contacted by the survey recruiter - Number of
+adults (18 years and older) in the group - Number of children (under 18
+years) in the group
+
+Ideally, responses or observed estimates for non-response bias variables
+should be collected from all respondents and non-respondents. The
+collection of information from all contacted individuals provides the
+best comparison of characteristics between the respondent and
+non-respondent populations. More practically, a majority of responses or
+observed estimates must be present to adequately characterize both the
+respondent and non-respondent populations. In this study, 70\% was
+identified as the minimum percentage of valid values for non-response
+variables needed for both respondent and non-respondent populations in
+order to adequately characterize the populations on a given non-response
+variable. All non-response variables met the minimum for 70\% valid
+values among respondents and/or non-respondents \ref{tab:nonresponse}.
+Correspondingly, all variables were used for non-response bias analysis.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:nonresponse} Number and percentage of respondents and
+non-respondents with valid values for nonresponse
+variable}\tabularnewline
+\toprule
+\textbf{Variable} & \textbf{Respondents} &
+\textbf{Non-Respondents}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Variable} & \textbf{Respondents} &
+\textbf{Non-Respondents}\tabularnewline
+\midrule
+\endhead
+Gender & x & y\tabularnewline
+Number of Adults & x & y\tabularnewline
+Number of Children & x & y\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{refs}{}
+\hypertarget{ref-carver2013}{}
+Carver, Erin, and James Caudill. 2013. \emph{Banking on Nature: The
+Economic Benefits to Local Communities of National Wildlife Refuge
+Visitation}. Book. U.S. Fish; Wildlife Service.
+
+\hypertarget{ref-dillman2014}{}
+Dillman, Don A., Jolene D. Smyth, and Leah Melani Christian. 2014.
+\emph{Internet, Phone, Mail, and Mixed-Mode Surveys: The Tailored Design
+Method}. Book. 4th ed. Hoboken: Wiley.
+
+\hypertarget{ref-krechmer2001}{}
+Krechmer, Daniel, Lewis Grimm, Daniel Hodge, Diana Mendes, and Frank
+Goetzke. 2001. \emph{Federal Lands Alternative Transportation Systems
+Study-Volume 3-Summary of National Ats Needs}. Book. Cambridge
+Systematics, Inc.,; BRW Group, Inc., prepared for Federal Highway
+Administration; Federal Transit Administration in association with
+National Park Service, Bureau of Land Management,; U.S. Fish; Wildlife
+Service.
+\url{https://www.transit.dot.gov/sites/fta.dot.gov/files/docs/3039_study.pdf}.
+
+\hypertarget{ref-salant1994}{}
+Salant, Priscilla, and Don A. Dillman. 1994. \emph{How to Conduct Your
+Own Survey}. Book. New York: Wiley.
+
+\hypertarget{ref-scheaffer1996}{}
+Scheaffer, Richard L, William Mendenhall III, R Lyman Ott, and Kenneth G
+Gerow. 2011. \emph{Elementary Survey Sampling}. Book. Cengage Learning.
+
+\hypertarget{ref-sexton2011}{}
+Sexton, Natalie R., Holly M. Miller, and Alia M. Dietsch. 2011.
+``Appropriate Uses and Considerations for Online Surveying in Human
+Dimensions Research.'' Journal Article. \emph{Human Dimensions of
+Wildlife} 16 (3): 154--63.
+doi:\href{https://doi.org/10.1080/10871209.2011.572142}{10.1080/10871209.2011.572142}.
+
+\hypertarget{ref-smith2018}{}
+Smith, A., and M. Anderson. 2018. ``Social Media Use in 2018.'' Report.
+Pew Research Center.
+\url{http://assets.pewresearch.org/wp-content/uploads/sites/14/2018/03/01105133/PI_2018.03.01_Social-Media_FINAL.pdf}.
+
+\hypertarget{ref-USFWS2011}{}
+U.S. Fish and Wildlife Service. 2011. \emph{Conserving the Future:
+Wildlife Refuges and the Next Generation}. Book. Washington, DC: U.S.
+Department of the Interior, U.S. Fish; Wildlife Service, National
+Wildlife Refuge System.
+\url{https://www.fws.gov/refuges/pdfs/FinalDocumentConservingTheFuture.pdf}.
+
+\hypertarget{ref-USFWS2014}{}
+---------. 2014. \emph{Standards of Excellence}. Book.
+\url{https://www.fws.gov/urban/soe.php}.
+
+\hypertarget{ref-USFWS2016a}{}
+---------. 2016a. \emph{National Wildlife Refuge System Communications
+Strategy}. Book.
+
+\hypertarget{ref-USFWS2016b}{}
+---------. 2016b. \emph{Plan 2035: The National Long Range
+Transportation Plan - Moving People, Conserving Wildlife}. Book.
+
+\hypertarget{ref-USFWS2017}{}
+---------. 2017. \emph{Inventory and Monitoring Initiative}. Book. Fort
+Collins, CO: U.S. Department of the Interior, U.S. Fish; Wildlife
+Service.
+
+\hypertarget{ref-USFWS2018}{}
+U.S. Fish and Wildlife Service and U.S. Census Bureau. 2018. \emph{2016
+National Survey of Fishing, Hunting, and Wildlife-Associated
+Recreation}. Book. Washington, DC: U.S. Department of the Interior, U.S.
+Fish; Wildlife Service.
+\url{https://www.census.gov/content/dam/Census/library/publications/2018/demo/fhw16-nat.pdf}.
+
+\hypertarget{ref-volpe2010}{}
+Volpe Center. 2010. \emph{Transit and Trail Connections-Assessment of
+Visitor Access to National Wildlife Refuges}. Book. U.S. Department of
+Transportation, Volpe National Transportation Systems Center; U.S. Fish;
+Wildlife Service.
+\url{https://www.transit.dot.gov/sites/fta.dot.gov/files/docs/Transit_Trails_Layout_Final_123010.pdf}.
+
+
+\end{document}
