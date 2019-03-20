@@ -1,0 +1,68 @@
+.flat-table {
+  display: block;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 115%;
+  overflow: auto;
+  width: auto;
+}
+  th {
+    background-color: #75AADB;
+    color: white;
+    font-weight: normal;
+    padding: 20px 30px;
+    text-align: center;
+  }
+  td {
+    background-color: rgb(238, 238, 238);
+    color: #4D4D4D;
+    padding: 20px 30px;
+  }
+  h1 {
+    background-color: #41AD49;
+    color: white;
+    font-size: 20pt;
+    font-weight: bolder;
+    line-height:1.2;
+    padding: 10px;
+    text-align: left;
+  }
+  h2 {
+    color: black;
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: left;
+  }
+  h3 {
+    color: black;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: left;
+  }
+.col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+.col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+.row:after { content: ""; display: table; clear: both; }
+#left {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:45%;
+  z-index:-10;
+}
+
+#right {
+  left:31.25%;
+  top: 75px;
+  float: right;
+  text-align: left;
+  z-index:-10;
+  width:45%;
+}

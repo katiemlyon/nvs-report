@@ -1,0 +1,94 @@
+--- 
+params: 
+  RefugeName: "Dungeness National Wildlife Refuge"
+  
+title: "`r paste('National Wildlife Refuge Visitor Survey: 2018 Individual Refuge Results for ', params$RefugeName)`"
+author: "Alia M. Dietsch, Colleen M. Hartel, Katie M. Lyon, Natalie R. Sexton"
+#date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalite
+link-citations: yes
+fig_caption: yes
+always_allow_html: yes
+cover-image: "refuge/cover.JPG"
+description: "These individual refuge results provide a summary of trip characteristics and experiences of a sample of visitors to `r paste(params$RefugeName)` during 2018 and are intended to inform decision-making efforts related to visitor services and transportation at this refuge."
+---
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(pacman)                            
+p_load(knitr, tidyverse)
+opts_chunk$set(echo = FALSE)                                        # don't display R code,
+opts_chunk$set(warning = FALSE)                                     # warnings,
+opts_chunk$set(message = FALSE)                                     # messages,
+opts_chunk$set(comment = "")                                        # or ## before each line of R output.
+opts_chunk$set(results = "asis")                                    # enable kable() rendering inside loops, functions
+```
+
+```{r eval=FALSE}
+install.packages("bookdown")
+```
+
+```{r setup, cache=FALSE}
+#library(knitr)
+#library(plyr)
+library(dplyr)
+#library(foreign)
+library(ggformula)
+library(ggplot2)
+library(ggstance)
+library(ggthemes)
+#library(glue)
+#library(grid)
+#library(gridExtra)
+library(formattable)
+library(kableExtra)
+library(lattice)
+library(leaflet)
+library(likert)
+library(Matrix)
+#library(plotly)
+#library(questionr)
+library(reshape2)
+library(tidyr)
+library(xtable)
+#library(waffle)
+#library(extrafont)
+
+# function to round percentages to whole number
+round_df <- function(x, digits) {
+  # round all numeric variables
+  # x: data frame 
+  # digits: number of digits to round
+  numeric_columns <- sapply(x, mode) == 'numeric'
+  x[numeric_columns] <-  round(x[numeric_columns], digits)
+  x
+}
+```
+
+
+```{r raw_data, cache.extra = file.info("nvs2018.csv"), include=FALSE}
+nvs2018 <- readr::read_csv("data/nvs2018.csv")
+```
+
+```{r subset_data, include=FALSE}
+nvs_subset <- nvs2018 %>%
+  filter(RefugeName == params$RefugeName)
+```
+
+# {-}
+
+<em>
+```{r child=(paste('refuge-info', params$RefugeName, 'quote.txt', sep = '/'))}
+```
+</em>
+
+<div style="text-align: right">
+---`r paste('A visitor to ', params$RefugeName)`
+</div>
+
+```{r fig.align='center', echo=FALSE}
+knitr::include_graphics(paste('refuge-info', params$RefugeName, 'cover.JPG', sep = '/'))
+```
+

@@ -1,0 +1,23 @@
+# Refuge Description
+```{r refuge-setup, echo = FALSE}
+library(knitr)
+```
+
+```{r child=(paste('refuge-info', params$RefugeName, 'description.txt', sep = '/'))}
+```
+
+
+```{r ref-map1, echo=FALSE, fig.cap="Map of `params$RefugeName`"}
+knitr::include_graphics(paste('refuge-info', params$RefugeName, 'map.png', sep = '/'), dpi = NULL)
+```
+TODO: FIX CAPTION AND ADD MAP URL
+
+```{r ref-map2, echo=FALSE, fig.cap="Map of `params$RefugeName`"}
+library(leaflet)
+leaflet() %>%
+  setView(174.764, -36.877, zoom = 16) %>% 
+  addTiles() %>%
+  addMarkers(174.764, -36.877, popup = "`r paste(params$RefugeName)`")
+
+```
+

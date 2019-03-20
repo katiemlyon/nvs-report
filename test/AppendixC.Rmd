@@ -1,0 +1,40 @@
+# Appendix C: Visitor Comments for This Refuge {-#AppendixC}
+```{r comment-setup, echo = FALSE}
+library(knitr)
+read_chunk('code/comments.R')
+```
+
+## Transportation Comments
+
+```{r comments, include = FALSE}
+```
+
+```{r trans-comments, echo=FALSE, tab.cap="Comments on transportation-related features"}
+library(kableExtra)
+kable(transComments) %>%
+  kable_styling(bootstrap_options = "striped") %>%
+  #column_spec(1, border_left = TRUE, border_right = TRUE) %>%
+  add_header_above(c("Section 5, Question 6: If you have any comments about transportation-related items at this refuge, please write them on the lines below."))
+
+```
+
+
+## Services, Facilities, and Opportunities Comments
+
+```{r echo=FALSE, tab.cap="Comments on services, facilities, and recreation opportunities"}
+library(kableExtra)
+kable(sfoComments) %>%
+  kable_styling(bootstrap_options = "striped") %>%
+  add_header_above(c("If you have any comments about services, facilities, and opportunities at this Refuge, please write them on the lines below."))
+
+```
+
+## Additional Comments
+
+```{r echo=FALSE, tab.cap="Overall Comments"}
+library(kableExtra)
+kable(sfoComments) %>%
+  kable_styling(bootstrap_options = "striped") %>%
+  add_header_above(c("If you have any comments about services, facilities, and opportunities at this Refuge, please write them on the lines below."))
+
+```

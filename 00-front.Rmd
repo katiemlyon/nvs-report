@@ -1,0 +1,11 @@
+# Acknowledgements {-}
+
+This study was funded by the U.S. Fish and Wildlife Service's Natural Resource Program Center, Division of Visitor Services and Communications, and Transportation Program. The study design and survey instrument were developed collaboratively with representatives from U.S. Fish and Wildlife Service and researchers from The Ohio State University (OSU). For their support and input to the study, we would like to thank [names]; and any staff and volunteers at `r paste(params$RefugeName)` who assisted with the implementation of this survey effort. Finally, we would like to especially acknowledge the following American Conservation Experience team members for their work in implementing the on-the-ground sampling for the 2018 survey effort: Ellen Bley, Kylie Campbell, Michelle Ferguson, Justin Gole, James Puckett, Nicole Stagg, and Angelica Varela. The success of this effort is largely a result of their dedication to the project, as well as to the people who come to explore these unique lands.
+
+**Suggested citation:**
+
+Dietsch, A. M., Hartel, C. M., Lyon, K. M., and Sexton, N.R. (`r format(Sys.time(), '%Y')`). "`r paste('National Wildlife Refuge Visitor Survey: 2018 Individual Refuge Results for ', params$RefugeName)`. The Ohio State University, Columbus, OH.
+
+```{r ref-image1, echo=FALSE, fig.align='center', out.extra='keepaspectratio', fig.cap="`r paste('refuge-info', params$RefugeName, 'image1caption.txt', sep = '/')`"}
+knitr::include_graphics(paste('refuge-info', params$RefugeName, 'image1.png', sep = '/'), dpi = NULL)
+```

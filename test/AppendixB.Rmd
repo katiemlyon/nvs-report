@@ -1,0 +1,9 @@
+# Appendix B: Survey Frequencies for `r params$RefugeName` {-} {#AppendixB}
+```{r include=FALSE}
+nvs2018 <- readr::read_csv("../data/nvs2018.csv")
+```
+
+```{r}
+library(summarytools)
+dfSummary(nvs2018, graph.col = FALSE)
+```
