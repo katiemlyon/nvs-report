@@ -1,0 +1,150 @@
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{color}          % enables font colors
+\usepackage[table]{xcolor}  % enables even more font and background colors
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage[normalem]{ulem}
+\usepackage[export]{adjustbox}  % enables two column images at the top
+
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage[utf8]{inputenc}   % sets document encoding to utf8
+\usepackage[default]{lato}    % sets default font to Lato
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{memhfixc}
+\usepackage{amssymb}          % for itemized list styles
+
+% document setup
+\definecolor{urbnblue}{HTML}{1696D2}    % defines the Urban Institute blue color
+\definecolor{grey}{HTML}{EEEEEE}    % defines the grey
+\usepackage{enumitem}                   % bullet alignment
+\setlist[2]{nosep}                      % sets the itemsep and parsep for level two lists to 0
+\setenumerate{nosep}                    % sets no itemsep for enumerate lists only
+\pagenumbering{gobble}                  % disable page numbering
+\usepackage[hang,flushmargin]{footmisc} % don't indent footnotes
+\usepackage[document]{ragged2e}         % ragged right
+\usepackage[none]{hyphenat}             % disable work breaks
+\renewcommand\thefootnote{\textcolor{urbnblue}{\arabic{footnote}}} 
+% change the color of the footnote indicator
+\hypersetup{
+  colorlinks,
+  linkcolor=urbnblue,
+  urlcolor=urbnblue,
+}
+\usepackage{parskip}
+\setlength{\parskip}{0.1in}               % set paragraph spacing
+
+% urban institute logo
+\newcommand{\urbnlogo}[0]{
+  \begin{figure}
+    \hspace{-0.12in}
+    \includegraphics[width=1.5in]{images/logo.jpg}
+    \label{fig:boat1}
+  \end{figure}
+}
+
+% urban institute logo and fund logo
+\newcommand{\urbnlogofunderlogo}[1]{
+  \begin{figure}
+  \centering
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \hspace{-0.12in}  
+    \includegraphics[width=1.5in,left]{design/urban_grid_blue_white.jpg}
+    \label{fig:test1}
+  \end{minipage}%
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \hspace{0.12in} 
+    \includegraphics[width=1.5in,right]{#1}
+    \label{fig:test2}
+  \end{minipage}
+  \end{figure}
+}
+
+% titles (14pt font)
+\newcommand{\urbntitle}[1]{
+  \begin{center}
+      \textbf{\LARGE{#1}}
+  \end{center}
+}
+  
+% subtitles (12pt font)
+\newcommand{\urbnsubtitle}[1]{
+  \begin{center}
+    \Large{\textcolor{urbnblue}{#1}}
+    \vspace{0.25in}    
+  \end{center}
+}
+
+% authors (11pt font)
+\newcommand{\urbnauthors}[1]{
+  \begin{center}
+    \textit{\large{#1}}
+    \vspace{0.25in} 
+  \end{center}
+}
+
+% preamble 1
+\newcommand{\preamble1}[1]{
+  \colorbox{grey}{grey}}
+}
+
+% heading 1
+\newcommand{\urbnheadingone}[1]{
+  \textbf{\LARGE{\\} \large{#1}}
+}
+
+% heading 2
+\newcommand{\urbnheadingtwo}[1]{
+  \textbf{\textcolor{urbnblue}{#1}}
+}
+
+% figure label
+\newcommand{\urbnfigurenumber}[1]{
+  \textcolor{urbnblue}{\tiny{\\} \normalsize{FIGURE #1 \\}}
+}
+
+% figure title
+\newcommand{\urbnfiguretitle}[1]{
+  \textbf{\normalsize{#1} \\}
+}
+
+% figure source
+\newcommand{\urbnsource}[1]{
+  \textbf{\footnotesize{#1}} \break
+}
+
+% figure note
+\newcommand{\urbnnote}[1]{
+  \textbf{\footnotesize{#1}} \break
+}
+
+% bullet points
+\renewcommand{\labelitemi}{\color{urbnblue}\tiny$\blacksquare$}   % blue square
+\renewcommand{\labelitemii}{\color{urbnblue}\tiny$\blacksquare$}  % blue square
+\renewcommand{\labelitemiii}{\color{urbnblue}\tiny$\blacksquare$} % blue square
+\renewcommand{\labelitemiv}{\color{urbnblue}\tiny$\blacksquare$}  % blue square
+
+\newenvironment{urbnbullets}
+{\begin{itemize}[leftmargin=*,labelindent=0.25in,labelsep=0.1875in]
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}}
+{\end{itemize}} 
+
+% numbered list
+\newenvironment{urbnenumerate}
+{\begin{enumerate}[leftmargin=*,labelindent=0.25in,labelsep=0.15625in]
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}}
+{\end{enumerate}} 

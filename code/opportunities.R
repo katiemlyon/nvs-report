@@ -1,8 +1,9 @@
 ## @knitr recopps
 require(likert)
+nvs2018 <- read.csv("data/nvs2018.csv")
 
 ##### Recreation Opportunities
-#BIRDWATIMP	WILDWATIMP	PHOTOIMP	ENVIEDIMP	HUNTIMP	FISHIMP	TRHIKEIMP	BIKEIMP	WATTRAILIMP	VOLUNIMP WILDIMP	
+#BIRDWATIMP	WILDWATIMP	PHOTOIMP	ENVIEDIMP	HUNTIMP	FISHIMP	TRHIKEIMP	BIKEIMP	WATTRAILIMP	VOLUNIMP WILDIMP
 #BIRDWATSAT	WILDWATSAT	PHOTOSAT	ENVIEDSAT	HUNTSAT	FISHSAT	TRHIKESAT	BIKESAT	WATTRAILSAT	VOLUNSAT	WILDSAT
 
 ##### Importance of recreation opportunities
@@ -24,9 +25,9 @@ implevels <- c('Not at all important',
 tryCatch({
   # This will throw an error because all the oppImpItems must have the same number of levels.
   lbad <- likert(recImpItems)
-}, error=function(e) { 
+}, error=function(e) {
   print("This is good that an error was thrown!")
-  print(e) 
+  print(e)
 })
 
 sapply(recImpItems, class) #Verify that all the columns are indeed factors
@@ -70,9 +71,9 @@ satlevels <- c('Not at all satisfied',
 tryCatch({
   # This will throw an error because all the recSatItems must have the same number of levels.
   lbad <- likert(recSatItems)
-}, error=function(e) { 
+}, error=function(e) {
   print("This is good that an error was thrown!")
-  print(e) 
+  print(e)
 })
 
 sapply(recSatItems, class) #Verify that all the columns are indeed factors

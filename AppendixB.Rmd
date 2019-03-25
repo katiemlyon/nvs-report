@@ -1,0 +1,57 @@
+# Appendix B: Survey Frequencies for `r params$RefugeName` {-#AppendixB}
+```{r appendB, echo = FALSE}
+library(knitr)
+read_chunk('code/satisfaction.R')
+read_chunk('code/opportunities.R')
+read_chunk('code/ImpSat.R')
+read_chunk('code/safewelcome.R')
+
+```
+
+## Overall Satisfaction{-}
+
+```{r echo=FALSE}
+#plot(refSat)
+```
+
+## Recreational Opportunities{-}
+```{r recopps, include = FALSE}
+```
+
+### Importance of Recreational Opportunities{-}
+```{r recImp, echo=FALSE, fig.cap=recImpTitle}
+plot(recImp, centered=TRUE)
+```
+
+### Satisfaction with Recreational Opportunities{-}
+```{r recSat, echo=FALSE, fig.cap=recSatTitle}
+plot(recSat, centered=TRUE)
+```
+
+## Services and Facilities{-}
+```{r facserv, include = FALSE}
+```
+
+Positive experiences are driven by first impressions of refuge facilities and people.
+
+### Importance of Facilities and Services{-}
+servicesImpTitle
+```{r servicesImp, echo=FALSE, fig.cap=servicesImpTitle}
+plot(servicesImp, centered=TRUE)
+```
+
+### Satisfaction with Facilities and Services{-}
+```{r servSatPlot, echo=FALSE, fig.cap=servicesSatTitle}
+plot(servicesSat, centered=TRUE)
+```
+
+## Feeling Safe and Welcome{-}
+
+```{r safe, include=FALSE}
+```
+
+safeTitle
+```{r echo=FALSE}
+plot(safe, centered=TRUE)
+```
+

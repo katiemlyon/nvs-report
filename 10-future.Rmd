@@ -6,83 +6,12 @@ library(dplyr)
 library(likert)
 ```
 
-## Forecasting Future Recreation Demand at This Refuge 
+## Forecasting Future Recreation Demand at This Refuge{-}
+```{block2, type='preamble1', echo=TRUE}
 Gaining a sense of what would encourage visitors to return (or what may prevent them from returning) would be useful information for managers, planners, and visitor services personnel. For example, some visitors may prefer increased infrastructure, while others may want more access to opportunities on the refuge. However, any management action aimed at increasing recreation participation should be considered in relation to possible effects on different visitor groups. For example, visitors may report that more infrastructure would lead to increased participation in a particular primary activity (e.g., birdwatching, fishing), but that particular increased participation could also result in others feeling crowded, subsequently reducing their participation. Thus, results in this section should be considered as part of a network of potential decisions that could affect different visitor groups disproportionally if not carefully considered in full.  
-
-```{r demand, include=FALSE}
-
-# Recreation Demand
-demand <- subset(nvs2018, select = c(LESSWAT:HABQUAL, AGECAT))
-demand[demand=="9"] <- NA
-
-demandItems <- subset(nvs2018, select = c(LESSWAT:HABQUAL))
-demandItems[demandItems=="9"] <- NA
-demandItems <- data.frame(apply(demandItems, 2, as.factor))
-str(demandItems)
-
-
-names(demandItems) = c(
-"Less water in lakes, rivers, or streams available for recreation", 
-"More acreage open to hunting and fishing", 
-"More infrastructure (for example, bathrooms, observation decks)", 
-"Recreation equipment available for rent (for example, fishing poles, binoculars, snowshoes)", 
-"Less regulations on fishing", 
-"Less regulations on hunting", 
-"A greater diversity of species", 
-"Fewer number of a single, preferred species", 
-"More people participating in my primary activity", 
-"An improvement in the quality of wetlands",
-"An improvement in the quality of wildlife habitat other than wetlands"
-)
-
-demandlevels <- c("'Decrease", "Stay the same", "Increase")
-
-# recode each factor and explicitly set the levels
-for(i in seq_along(demandItems)) {
-  demandItems[,i] <- factor(demandItems[,i], levels = demandlevels)
-}
-demandProp <- likert(demandItems)
-demandProp
-demandTitle <- "Visitors’ beliefs about how changes to the refuge would impact participation in their primary activity at this refuge"
-#plot(demandProp, centered=FALSE) + ggtitle(demandTitle)
-
-demandTable <- summary(demandProp)
-str(demandTable)
-
-round_df <- function(x, digits) {
-  # round all numeric variables
-  # x: data frame 
-  # digits: number of digits to round
-  numeric_columns <- sapply(x, mode) == 'numeric'
-  x[numeric_columns] <-  round(x[numeric_columns], digits)
-  x
-}
-
-demandTable$high <- round_df(demandTable$high, 0)
-
-demandTable[with(demandTable, order(-high)), ] %>% select (Item, high)
-
 ```
 
-```{r echo=FALSE}
-plot(demandProp, centered=FALSE) + ggtitle(demandTitle)
-```
-
-```{r echo=FALSE}
-```
-
-```{r echo=FALSE}
-# read chunk (does not run code)
-knitr::read_chunk('code/programs.R')
-```
-
-## Visitor Programs
+## Visitor Programs{-}
+```{block2, type='preamble1', echo=TRUE}
 Offering programming that is equitable to various groups of visitors at refuges, whether located in urban areas or elsewhere, will help to build a stronger conservation constituency into the future [@USFWS2014]. Creation and administration of different types of programs can encourage people to continue visiting the refuge, and further build relationships and encourage visitation among new audiences. These opportunities can focus a variety of interests and topics ranging from skill-building, specific youth programs, family-based or multi-generational programs, or showcasing local or unique culture. Programs that focus on the interests of these varied audiences in order to foster stronger connections to the refuge and its resources may ultimately help to enhance conservation goals.
-
-```{r programs}
-<<progPlot>>
-```
-
-```{r progAge}
-<<progAgePlot>>
 ```

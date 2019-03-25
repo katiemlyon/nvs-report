@@ -1,6 +1,6 @@
 ## @knitr transMode
 
-nvs2018 <- read.csv("./data/nvs2018.csv")
+nvs2018 <- read.csv("data/nvs2018.csv")
 library(dplyr)
 #library(tidyr)
 library(likert)
@@ -87,7 +87,7 @@ str(transModeLocalTable)
 
 round_df <- function(x, digits) {
   # round all numeric variables
-  # x: data frame 
+  # x: data frame
   # digits: number of digits to round
   numeric_columns <- sapply(x, mode) == 'numeric'
   x[numeric_columns] <-  round(x[numeric_columns], digits)
@@ -155,7 +155,7 @@ str(transModeRefTable)
 
 round_df <- function(x, digits) {
   # round all numeric variables
-  # x: data frame 
+  # x: data frame
   # digits: number of digits to round
   numeric_columns <- sapply(x, mode) == 'numeric'
   x[numeric_columns] <-  round(x[numeric_columns], digits)

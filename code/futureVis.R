@@ -1,3 +1,4 @@
+## @knitr futvisit
 
 nvs2018 <- read.csv("data/nvs2018.csv")
 require(dplyr)
@@ -18,15 +19,15 @@ str(demandItems)
 
 
 names(demandItems) = c(
-  "Less water in lakes, rivers, or streams available for recreation", 
-  "More acreage open to hunting and fishing", 
-  "More infrastructure (for example, bathrooms, observation decks)", 
-  "Recreation equipment available for rent (for example, fishing poles, binoculars, snowshoes)", 
-  "Less regulations on fishing", 
-  "Less regulations on hunting", 
-  "A greater diversity of species", 
-  "Fewer number of a single, preferred species", 
-  "More people participating in my primary activity", 
+  "Less water in lakes, rivers, or streams available for recreation",
+  "More acreage open to hunting and fishing",
+  "More infrastructure (for example, bathrooms, observation decks)",
+  "Recreation equipment available for rent (for example, fishing poles, binoculars, snowshoes)",
+  "Less regulations on fishing",
+  "Less regulations on hunting",
+  "A greater diversity of species",
+  "Fewer number of a single, preferred species",
+  "More people participating in my primary activity",
   "An improvement in the quality of wetlands",
   "An improvement in the quality of wildlife habitat other than wetlands"
 )
@@ -73,7 +74,7 @@ str(demandTable)
 
 round_df <- function(x, digits) {
   # round all numeric variables
-  # x: data frame 
+  # x: data frame
   # digits: number of digits to round
   numeric_columns <- sapply(x, mode) == 'numeric'
   x[numeric_columns] <-  round(x[numeric_columns], digits)
@@ -97,15 +98,15 @@ str(demand2Items)
 
 
 names(demand2Items) = c(
-  "Less water in lakes, rivers, or streams available for recreation", 
-  "More acreage open to hunting and fishing", 
-  "More infrastructure (for example, bathrooms, observation decks)", 
-  "Recreation equipment available for rent (for example, fishing poles, binoculars, snowshoes)", 
-  "Less regulations on fishing", 
-  "Less regulations on hunting", 
-  "A greater diversity of species", 
-  "Fewer number of a single, preferred species", 
-  "More people participating in my primary activity", 
+  "Less water in lakes, rivers, or streams available for recreation",
+  "More acreage open to hunting and fishing",
+  "More infrastructure (for example, bathrooms, observation decks)",
+  "Recreation equipment available for rent (for example, fishing poles, binoculars, snowshoes)",
+  "Less regulations on fishing",
+  "Less regulations on hunting",
+  "A greater diversity of species",
+  "Fewer number of a single, preferred species",
+  "More people participating in my primary activity",
   "An improvement in the quality of wetlands",
   "An improvement in the quality of wildlife habitat other than wetlands"
 )

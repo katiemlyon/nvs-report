@@ -1,6 +1,6 @@
 # Appendix A. Project Methods {-}
 
-## Selecting Participating Refuges
+## Selecting Participating Refuges{-}
 
 The national visitor survey was conducted from March 2018 to April 2019 on 37 refuges across the Refuge System (tab:refuge-list). Each refuge was selected for participation by regional office Visitor Services Chiefs.
 
@@ -28,11 +28,11 @@ Table: (\#tab:refuge-list)
 | Desert NWR (NV)<br> San Diego NWR (CA)<br> San Diego Bay NWR (CA) |
 
 
-## Developing the Survey Instrument
+## Developing the Survey Instrument{-}
 
 Researchers at OSU developed the survey in consultation with the Service Headquarters Office, managers, planners, and visitor services professionals. The survey was peer-reviewed by academic and government researchers. The survey and associated methodology were approved by the Office of Management and Budget (OMB control #: 0596-0236; expiration date: 11/30/2020).
 
-## Contacting Visitors
+## Contacting Visitors{-}
 
 Refuge staff identified two separate 14-day sampling periods, and one or more locations at which to sample, that best reflected the diversity of use and specific visitation patterns of each participating refuge. A standardized sampling schedule was created for all refuges that included eight randomly selected sampling shifts during each of the two sampling periods. Sampling shifts were four (hr) time bands, stratified across AM and PM as well as weekend and weekdays. In coordination with refuge staff, any necessary customizations were made to the standardized schedule to accommodate the identified sampling locations and to address specific spatial and temporal patterns of visitation.
 
@@ -51,13 +51,13 @@ All visitors that agreed onsite to fill out a survey received the same sequence 
 
 Each mailing included instructions for completing the survey online, so visitors had an opportunity to complete an online survey with each mailing. Those visitors indicating a preference for Spanish were sent Spanish versions of all correspondence (including the survey). Online survey data were exported and paper survey data were entered into Microsoft Excel using a standardized survey codebook and data entry procedure. All survey data were analyzed using _Statistical Package for the Social Sciences_ (SPSS, v.23) and R software^[Any use of trade, firm, or product names is for descriptive purposes only and does not imply endorsement by the U.S. Government.].
 
-## Interpreting the Results
+## Interpreting the Results{-}
 
 The extent to which these results accurately represent the total population of visitors to this refuge is dependent on the number of visitors who completed the survey (sample size) and the ability of the variation resulting from that sample to reflect the beliefs and interests of different visitor user groups (Scheaffer and others, 1996). The composition of the sample is dependent on the ability of the standardized sampling protocol for this study to account for the spatial and temporal patterns of visitor use unique to each refuge. Spatially, the geographical layout and public-use infrastructure varies widely across refuges. Some refuges can be accessed only through a single entrance, while others have multiple unmonitored access points across large expanses of land and water. As a result, the degree to which sampling locations effectively captured spatial patterns of visitor use will vary from refuge to refuge. Temporally, the two 14-day sampling periods may not have effectively captured all of the predominant visitor uses/activities on some refuges during the course of a year, which may result in certain survey measures such as visitors&#39; self-reported &quot;primary activity during their visit&quot; reflecting a seasonality bias. Results contained within this report may not apply to visitors during all times of the year or to visitors who did not visit the survey locations.
 
 In this report, visitors who responded to the survey are referred to simply as &quot;visitors.&quot; However, when interpreting the results for `r paste(params$RefugeName)`, any potential spatial and temporal sampling limitation specific to this refuge needs to be considered when generalizing the results to the total population of visitors. For example, a refuge that sampled during a special event (for example, birding festival) held during the spring may have contacted a higher percentage of visitors who traveled greater than 50 miles (mi) to get to the refuge than the actual number of these people who would have visited throughout the calendar year (that is, oversampling of nonlocals). Another refuge may not have enough nonlocal visitors in the sample to adequately represent the beliefs and opinions of that group type. If the sample for a specific group type (for example, nonlocals, hunters, visitors who paid a fee) is too low (_n_ \&lt; 30), a warning is included in the text. Finally, the term &quot;this visit&quot; is used to reference the visit during which people were contacted to participate in the survey.
 
-## Non-Response Bias
+## Non-Response Bias{-}
 Non-response bias is the bias that results when respondents differ in meaningful ways from nonrespondents. Non-response bias affects the ability to generalize survey results, to some degree and in some ways, from the sample to the study’s target population [@dillman2014, @salant1994]. If non-respondents are found to differ from respondents in meaningful ways, care should be taken when interpreting survey responses, as they may overrepresent some segments of the target population to some degree, and may under-represent other segments of the population to some degree.
 
 To check for non-response bias, this study used answers to three non-response bias questions and three observable characteristics of the contacted visitor to compare respondents with nonrespondents. The following questions and observations were used for evaluation of non-response bias:

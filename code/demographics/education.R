@@ -62,3 +62,20 @@ nvs2018$EDCAT[SCHOOL >= 16 & SCHOOL <= 17] <- "College"
 nvs2018$EDCAT[SCHOOL >= 18] <- "Graduate School"
 detach(nvs2018)
 table(nvs2018$EDCAT)
+
+# What are the education levels? 
+# EDCAT is a factor (i.e., categorical) variable, a bar chart 
+# is a great visualization to use.
+#
+ggplot(titanic, aes(x = Survived)) + 
+  geom_bar()
+
+# If you really want percentages.
+prop.table(table(titanic$Survived))
+
+# Add some customization for labels and theme.
+ggplot(titanic, aes(x = Survived)) + 
+  theme_bw() +
+  geom_bar() +
+  labs(y = "Passenger Count",
+       title = "Titanic Survival Rates")

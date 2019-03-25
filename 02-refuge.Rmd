@@ -1,5 +1,6 @@
 # Refuge Description
 ```{r refuge-setup, echo = FALSE}
+data(nvs2018)
 library(knitr)
 ```
 
@@ -11,13 +12,4 @@ library(knitr)
 knitr::include_graphics(paste('refuge-info', params$RefugeName, 'map.png', sep = '/'), dpi = NULL)
 ```
 TODO: FIX CAPTION AND ADD MAP URL
-
-```{r ref-map2, echo=FALSE, fig.cap="Map of `params$RefugeName`"}
-library(leaflet)
-leaflet() %>%
-  setView(174.764, -36.877, zoom = 16) %>% 
-  addTiles() %>%
-  addMarkers(174.764, -36.877, popup = "`r paste(params$RefugeName)`")
-
-```
 

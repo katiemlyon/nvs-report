@@ -1,5 +1,6 @@
 ## @knitr satisfaction
 require(likert)
+nvs2018 <- read.csv("data/nvs2018.csv")
 
 ##### Overall Satisfaction
 refSatTitle <- "How satisfied are you with the following?"
@@ -20,9 +21,9 @@ satlevels <- c('Not at all satisfied',
 tryCatch({
   # This will throw an error because all the refSatItems must have the same number of levels.
   lbad <- likert(refSatItems)
-}, error=function(e) { 
+}, error=function(e) {
   print("This is good that an error was thrown!")
-  print(e) 
+  print(e)
 })
 
 sapply(refSatItems, class) #Verify that all the columns are indeed factors
@@ -45,7 +46,7 @@ str(refSatTable)
 # function to round percentages to whole number
 round_df <- function(x, digits) {
   # round all numeric variables
-  # x: data frame 
+  # x: data frame
   # digits: number of digits to round
   numeric_columns <- sapply(x, mode) == 'numeric'
   x[numeric_columns] <-  round(x[numeric_columns], digits)
@@ -53,10 +54,10 @@ round_df <- function(x, digits) {
 }
 
 # round percent satisfied
-refSatTable$high <- round_df(refSatTable$high, 0) 
+refSatTable$high <- round_df(refSatTable$high, 0)
 
 # sort percent satisfied
-refSatTable[with(refSatTable, order(-high)), ] %>% dplyr::select (Item, high) 
+refSatTable[with(refSatTable, order(-high)), ] %>% dplyr::select (Item, high)
 
 qual <- subset(refSatTable, Item == "QUALSAT")
 qualSat = qual$high

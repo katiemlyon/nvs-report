@@ -1,17 +1,17 @@
 bookdown::gitbook:
   css: style.css
+  split_by: chapter
+  split_bib: FALSE
   config:
     toc:
+      collapse: none
       before: |
-        <li><a href="./">National Visitor Survey Results</a></li>
+        <li><a href="./">Visitor Survey Report</a></li>
     download: ["pdf", "epub"]
-bookdown::html_book:
-    includes:
-      in_header: style.css
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
   latex_engine: xelatex
-  citation_package: none
+  citation_package: natbib
   keep_tex: yes
 bookdown::epub_book: default

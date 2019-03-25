@@ -4,7 +4,7 @@ library(dplyr)
 library(gridExtra)
 library(reshape2)
 
-#nvs2018 <- read.csv("data/nvs2018.csv")
+nvs2018 <- read.csv("data/nvs2018.csv")
 df <- subset(nvs2018, select = c(FELTWEL:TREATDIF, GENDER, AGECAT, WHITE:OTHERETH))
 df <- na.omit(df)
 
@@ -25,12 +25,12 @@ agreeLevels <- c('Strongly disagree',
                  'Strongly agree')
 
 names(safeItems) = c(
-  "I felt welcome during my visit to this refuge.", 
-  "I felt safe during my visit to this refuge.", 
-  "Crime is a problem at this refuge.", 
-  "I feel comfortable being in nature.", 
-  "I do not like being in nature by myself.", 
-  "People closest to me enjoy participating in nature-based recreation.", 
+  "I felt welcome during my visit to this refuge.",
+  "I felt safe during my visit to this refuge.",
+  "Crime is a problem at this refuge.",
+  "I feel comfortable being in nature.",
+  "I do not like being in nature by myself.",
+  "People closest to me enjoy participating in nature-based recreation.",
   "Generally, people who look like me are treated differently when they participate in nature-based recreation."
 )
 

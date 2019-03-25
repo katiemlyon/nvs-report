@@ -1,18 +1,21 @@
-#### Primary activity
+## @knitr primact
+
+nvs2018 <- read.csv("data/nvs2018.csv")
+
+#### Primary Activity
+require(likert)
 library(plyr)
 library(dplyr)
 
 ## subset primary activity text
-primact <- subset(nvs2018, select = c(PRIMACTCODED))
-primact[primact=="999"] <- NA
-
-# remove rows where NA"
-primact <- primact[!(is.na(primact$PRIMACTCODEDCODED)),]
+# omit NA
+primact <- na.omit(nvs2018$PRIMACTCODED)
+primact <- as.data.frame(primact)
 
 # sort by name
 #primact <- primact[sort(primact$PRIMACTCODED),]
 
-# Frequencies 
+# Frequencies
 primactFreq <- table(primact)
 primactFreq <- as.data.frame(primactFreq)
 primactFreq <- primactFreq[order(primactFreq$Freq, decreasing = TRUE),]
@@ -34,18 +37,29 @@ primact %>%
   mutate(my_ranks = order(order(PRIMACTCODED, decreasing=TRUE)))
 
 by_act <- primact %>% arrange(PRIMACTCODED) %>%
-  #group_by(PRIMACTCODED) %>% 
+  #group_by(PRIMACTCODED) %>%
   mutate(rank = rank(PRIMACTCODED, ties.method = "first"))
 
 by_act %>% filter(rank <= 3)
 
 #############
 
-## Primary Activity by Age
 # re-order levels
 reorder_size <- function(x) {
-  factor(x, levels = names(sort(table(x), decreasing = TRUE)))
+  factor(x, levels = names(sort(table(x), decreasing = FALSE)))
 }
+
+#############
+
+primactBar <- ggplot(data=subset(nvs2018, !is.na(primact)), aes(x = reorder_size(`PRIMACTCODED`))) +
+  geom_bar(aes(y = (..count..)/sum(..count..))) +
+  xlab("Primary Activity") +
+  scale_y_continuous(labels = scales::percent, name = "Proportion") +
+  coord_flip()
+
+
+## Primary Activity by Age
+
 ggplot(data=subset(nvs2018, !is.na(AGECAT)), aes(x = reorder_size(`PRIMACTCODED`))) +
   geom_bar(aes(y = (..count..)/sum(..count..))) +
   xlab("PRIMACTCODED") +
@@ -85,3 +99,31 @@ nvsPrimAct <- subset(nvs2018, PRIMACTCODED %in% top2)
 # order factor levels
 nvsPrimAct$PRIMACTCODED <- factor(nvsPrimAct$PRIMACTCODED, levels = rev(top2))
 
+#===============================
+# BAR CHART WITH HIGHLIGHTED BAR
+#===============================
+primactBar <- primact %>%
+  group_by(primact) %>%
+  summarise(primact_count = n()) %>%
+  mutate(highlight_flag = ifelse(primact == 'Hiking/Walking', T, F)) %>%
+  ggplot(aes(x = fct_reorder(primact, primact_count), y = primact_count)) +
+  geom_bar(aes(fill = highlight_flag), stat = 'identity') +
+  scale_fill_manual(values = c('#595959', 'orange')) +
+  coord_flip() +
+  labs(x = 'Primary Activity'
+       ,y = 'Number of Participants'
+       ,title = str_c("Most visitors to this refuge "
+                      , "\nparticipate in Hiking/Walking")
+  ) +
+  theme_bw() +
+  theme(text = element_text(color = '#444444')
+        ,plot.title = element_text(size = 18, face = 'bold')
+        ,legend.position = 'none'
+        ,axis.title = element_text(face = 'bold')
+        ,axis.title.y = element_text(angle = 90, vjust = .5)
+        ,plot.background = element_blank()
+        ,panel.grid.major = element_blank()
+        ,panel.grid.minor = element_blank()
+        ,panel.border = element_blank()
+  )
+primactBar

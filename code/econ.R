@@ -101,13 +101,13 @@ mean(spend$TOTALpersonday)
 
 # subset local and nonlocal spending
 str(nvs2018$LOCALAREA)
-spendLocal <- subset(nvs2018, LOCALAREA == "Local", 
+spendLocal <- subset(nvs2018, LOCALAREA == "Local",
                      select=c(TOTALpersonday))
 spendLocal <- na.omit(spendLocal)
 range(spendLocal$TOTALpersonday)
 mean(spendLocal$TOTALpersonday)
 
-spendNonloc<- subset(nvs2018, LOCALAREA == "Nonlocal", 
+spendNonloc<- subset(nvs2018, LOCALAREA == "Nonlocal",
                      select=c(TOTALpersonday))
 spendNonloc <- na.omit(spendNonloc)
 range(spendNonloc$TOTALpersonday)
@@ -118,7 +118,7 @@ library(mosaic)
 library(kableExtra)
 spendTable <- favstats(TOTALpersonday ~ LOCALAREA, data = spend)
 names(spendTable)
-spendTable <- spendTable[, c("LOCALAREA", "n", "median", "mean", "sd", "min", "max")] 
+spendTable <- spendTable[, c("LOCALAREA", "n", "median", "mean", "sd", "min", "max")]
 names(spendTable) = c("Visitors", "n", "Median", "Mean", "SD", "Min", "Max")
 spendTable
 kable(spendTable)

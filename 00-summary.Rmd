@@ -12,16 +12,27 @@ read_chunk('code/info.R')
 
 ```{r info-source, include = FALSE}
 ```
-This report describes the results of a visitor survey at `r paste(params$RefugeName)` (this refuge). Visitors were contacted during two sampling periods outlined in Appendix A. A total of `r length(nvs2018)` visitor groups were contacted to participate in the survey. Of those groups, `r length(nvs2018)` agreed to participate in the study. Questionnaires were completed and returned by `r length(nvs2018)` visitors, resulting in a completion rate of `r length(nvs2018)/length(nvs2018)`% among those visitor groups that agreed to participate in the study and an overall response rate of `r length(nvs2018)/length(nvs2018)`% for the study.
+## Overview {-}
+This report describes the results of a visitor survey at `r paste(params$RefugeName)` (this refuge). Visitors were contacted during two 2-week sampling periods to collect data on visitors’ experiences. A total of `r length(nvs2018)` visitor groups were contacted to participate in the survey. Of those groups, `r length(nvs2018)` agreed to participate in the study. Questionnaires were completed and returned by `r length(nvs2018)` visitors, resulting in a completion rate of `r length(nvs2018)/length(nvs2018)`% among those visitor groups that agreed to participate in the study and an overall response rate of `r length(nvs2018)/length(nvs2018)`% for the study.
 
-**Key Findings:**
+The questions were designed to gather information on the following
+themes: 
 
-  - X are the most popular activities. They are also the most commonly mentioned primary reason for visiting.
-  - `r (refTwo)`% respondents had visited the refuge before
-  - Visitors average `r` visits per year
-  - Visit length averages `r` hours
-  - **The most frequently used information resource is `r tolower((infoTable$Item)[1])` (`r (infoTable$high)[1]`%).** Other frequently used information sources are `r (infoTable$Item)[2]` (`r (infoTable$high)[2]`%) and `r (infoTable$Item)[3]` (`r (infoTable$high)[3]`%). More than `r` (`r`%) did not obtain any outside information prior to visiting. 
+- Activity participation and trip characteristics
+- Information sources used and their helpfulness
+- Modes of transportation used
+- Satisfaction with transportation, facilities, services, and recreation opportunties
+- Spending in the local area
   - Visitors opinions about this refuge
   - Transportation at this refuge
   - Visitor spending in the local communities
   - Enhancing future refuge visits
+  
+**Key Findings:**
+
+  - `r (primactProp$primact)[1]` is the most commonly mentioned primary reason for visiting (`r (primactProp$Freq)[1]`%) 
+  - `r (refTwo)`% respondents had visited the refuge before
+  - Visitors average `r` visits per year
+  - Visit length averages `r` hours
+  - The most frequently used information resource is `r tolower((infoTable$Item)[1])` (`r (infoTable$high)[1]`%). Other frequently used information sources are `r (infoTable$Item)[2]` (`r (infoTable$high)[2]`%) and `r (infoTable$Item)[3]` (`r (infoTable$high)[3]`%). More than `r` (`r`%) did not obtain any outside information prior to visiting. 
+

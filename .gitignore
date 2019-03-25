@@ -1,9 +1,5 @@
 .Rproj.user
 .Rhistory
 .RData
+.csv
 rsconnect
-_publish.R
-packages.bib
-data/
-refuge-info/
-shiny/
