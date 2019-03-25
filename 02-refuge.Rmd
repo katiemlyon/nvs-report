@@ -9,7 +9,7 @@ library(knitr)
 
 
 ```{r ref-map1, echo=FALSE, fig.cap="Map of `params$RefugeName`"}
-knitr::include_graphics(paste('refuge-info', params$RefugeName, 'map.png', sep = '/'), dpi = NULL)
+knitr::include_graphics(paste('refuge-info', params$RefugeName, 'map.png', sep = '/'), dpi = 5)
 ```
 TODO: FIX CAPTION AND ADD MAP URL
 

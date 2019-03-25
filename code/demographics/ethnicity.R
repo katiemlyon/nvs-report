@@ -1,9 +1,15 @@
 # ETHNICITY
 # Multiple Dichotomous Variables
+
+nvs2018 <- read.csv("data/nvs2018.csv")
+
+library(likert)
+source("code/functions/round_df.R")
+
 str(nvs2018$WHITE)
 
 ethnicity <- subset(nvs2018, select = c(WHITE:OTHERETH))
-ethnicity[ethnicity == "9"] <- NA
+#ethnicity[ethnicity == "9"] <- NA
 
 names(ethnicity) = c(
   "White",
@@ -63,3 +69,57 @@ eth$Race[eth$newvar == 1 & eth$OTHERETH == "Yes"] <- "Other"
 table(eth$Race)
 
 race = eth$Race
+
+###################
+
+ETH$Race <- NA
+ETH$Race <- rowSums(ETH == "Yes")
+ETH$Race[ETH$newvar > 1] <- "Two or more races"
+ETH$Race[ETH$newvar == 1 & ETH$WHITE == "Yes"] <- "White"
+ETH$Race[ETH$newvar == 1 & ETH$HISPANIC == "Yes"] <- "Hispanic/Latino"
+ETH$Race[ETH$newvar == 1 & ETH$AFRAMER == "Yes"] <- "African American/Black"
+ETH$Race[ETH$newvar == 1 & ETH$ASIAN == "Yes"] <- "Asian"
+ETH$Race[ETH$newvar == 1 & ETH$MIDEAST == "Yes"] <- "Middle Eastern"
+ETH$Race[ETH$newvar == 1 & ETH$PACISL == "Yes"] <- "Pacific Islander"
+ETH$Race[ETH$newvar == 1 & ETH$OTHERETH == "Yes"] <- "Other"
+table(ETH$Race)
+
+raceProp <- prop.table(table(ETH$Race))*100 # cell percentages
+raceProp <- round_df(raceProp) # cell percentages
+raceProp <- as.data.frame(raceProp)
+raceProp <- raceProp[order(raceProp$Freq, decreasing = TRUE),]
+colnames(raceProp) <- c("Race", "Proportion")
+raceProp
+
+raceProp <- raceProp %>%
+  mutate(Eth = "Race")
+
+library(tidyverse)
+library(ggthemes)
+
+ggplot(raceProp, aes(x = ETH, y = Proportion, fill = Race)) +
+  geom_col() +
+  geom_text(aes(label = paste0(Proportion, "%")),
+            position = position_stack(vjust = 0.5)) +
+  theme_economist(base_size = 1) +
+  scale_fill_economist() +
+  #  theme_minimal(base_size = 16) +
+  #  scale_fill_brewer(palette = "Set2") +
+  theme(legend.position = "right",
+        legend.title = element_blank()) +
+  theme(axis.title.y = element_text(margin = margin(r = 20))) +
+  ylab("Percentage") +
+  xlab("Race")
+
+ggplot(ETH, aes(x = ETH, y = Proportion, fill = Race)) +
+  geom_col() +
+  geom_text(aes(label = paste0(Proportion, "%")),
+            position = position_stack(vjust = 0.5)) +
+  scale_fill_brewer(palette = "Set2") +
+  theme_minimal(base_size = 16) +
+  ylab("Percentage") +
+  xlab(NULL)
+
+###############
+
+

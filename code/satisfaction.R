@@ -1,6 +1,9 @@
 ## @knitr satisfaction
-require(likert)
 nvs2018 <- read.csv("data/nvs2018.csv")
+
+require(likert)
+library(dplyr)
+source("code/functions/round_df.R")
 
 ##### Overall Satisfaction
 refSatTitle <- "How satisfied are you with the following?"

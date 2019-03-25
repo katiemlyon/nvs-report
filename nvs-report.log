@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.21)  25 MAR 2019 10:11
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.21)  26 MAR 2019 11:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -713,22 +713,46 @@ Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmargin=\skip60
 \droptitle=\skip61
 )
+(c:/Users/klyon/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption.st
+y
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
 
-! LaTeX Error: Missing \begin{document}.
+(c:/Users/klyon/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption3.s
+ty
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen175
+\captionmargin@=\dimen176
+\captionwidth=\dimen177
+\caption@tempdima=\dimen178
+\caption@indent=\dimen179
+\caption@parindent=\dimen180
+\caption@hangindent=\dimen181
+)
+\c@caption@flags=\count294
+\c@ContinuedFloat=\count295
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
+(c:/Users/klyon/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.
+sty
+Package: ltcaption 2018/08/26 v1.4-95 longtable captions (AR)
+))
+
+! Package fontspec Error: The font "Alegreya" cannot be found.
+
+For immediate help type H <return>.
  ...                                              
                                                   
-l.100 }
-        
+l.101 
+       
 Here is how much of TeX's memory you used:
- 22188 strings out of 494921
- 415130 string characters out of 6176112
- 504999 words of memory out of 5000000
- 25988 multiletter control sequences out of 15000+600000
+ 23294 strings out of 494921
+ 435287 string characters out of 6176112
+ 532830 words of memory out of 5000000
+ 27083 multiletter control sequences out of 15000+600000
  532722 words of font info for 28 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 45i,0n,68p,807b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,0n,92p,807b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 No pages of output.

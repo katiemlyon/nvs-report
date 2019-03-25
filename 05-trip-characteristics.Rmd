@@ -1,0 +1,159 @@
+# Visitor Trip Characteristics {-#trip-characteristics}
+```{r trip-setup, echo = FALSE}
+library(knitr)
+read_chunk('code/info.R')
+read_chunk('code/visit.R')
+#read_chunk('code/socialMedia.R')
+```
+
+```{r info-source, include = FALSE}
+```
+
+```{block2, type='preamble1', echo = TRUE}
+Effective communication with the public is critical for managing and enhancing visitor experiences. Additionally, the Refuge System’s success in reaching new and diverse audiences depends on its ability to keep pace with communication trends [@USFWS2016a]. Understanding how visitors both seek out and share information about the refuge and its resources using various communication channels (e.g., printed information, friends and family, websites, social media) can inform the refuge's approach to communicating with visitors at different points of their trips (before, during and after). Information in this section can be used to assess changes in what sources are used as well as how visitors perceive the helpfulness of Service communications over time. Refuge staff can use communication channels preferred by visitors to inform the public about the Refuge System's mission and accomplishments. 
+```
+
+## Trip Planning and Use of Social Media{-}
+The survey asked which information sources visitors used to learn about the refuge and its resources and the degree to which each information source was helpful. Visitors across different ages may use different information sources to learn about this refuge and its resources. The full list of information sources presented to visitors is contained in (AppendixB).
+
+<div class="row">
+<div id="left">
+### Learning about This Refuge{-}
+
+Visitors across different ages may use different information sources to learn about this refuge and its resources. The full list of information sources presented to visitors is contained in Appendix B. 
+
+Among all visitors, the following information sources were most frequently rated as very or extremely helpful:
+
+- `r (infoTable$Item)[1]` (`r (infoTable$high)[1]`%)
+- `r (infoTable$Item)[2]` (`r (infoTable$high)[2]`%)
+- `r (infoTable$Item)[3]` (`r (infoTable$high)[3]`%)
+
+Visitors under the age of 35 most often used these information sources to learn about the refuge:
+
+- `r (infoTable18$Item)[1]` (`r (infoTable18$high)[1]`%)
+- `r (infoTable18$Item)[2]` (`r (infoTable18$high)[2]`%)
+- `r (infoTable18$Item)[3]` (`r (infoTable18$high)[3]`%)
+
+Visitors over the age of 35 most often used these information sources to learn about the refuge:
+
+- `r (infoTable35plus$Item)[1]` (`r (infoTable35plus$high)[1]`%)
+- `r (infoTable35plus$Item)[2]` (`r (infoTable35plus$high)[2]`%)
+- `r (infoTable35plus$Item)[3]` (`r (infoTable35plus$high)[3]`%)
+
+</div>
+<div id="right">
+
+### Sharing Refuge Experiences{-}
+
+`r paste(useSocmedTxt)` half of visitors (`r useSocmed`%) reported using social media to share their refuge experience with other people. The full list of social media outlets presented to visitors is contained in Appendix B.
+
+Among all visitors, the following social media outlets were used most often to share refuge experiences:
+
+- `r (smTable$Item)[1]` (`r (smTable$high)[1]`%)
+- `r (smTable$Item)[2]` (`r (smTable$high)[2]`%)
+- `r (smTable$Item)[3]` (`r (smTable$high)[3]`%)
+
+Visitors under the age of 35 most often used these social media outlets to share refuge experiences:
+
+- `r (smTable18to34$Item)[1]` (`r (smTable18to34$high)[1]`%)
+- `r (smTable18to34$Item)[2]` (`r (smTable18to34$high)[2]`%)
+- `r (smTable18to34$Item)[3]` (`r (smTable18to34$high)[3]`%)
+
+Visitors over the age of 35 most often used these social media outlets to share refuge experiences:
+
+- `r (smTable$Item)[1]` (`r (smTable$high)[1]`%)
+- `r (smTable$Item)[2]` (`r (smTable$high)[2]`%)
+- `r (smTable$Item)[3]` (`r (smTable$high)[3]`%)
+</div>
+</div>
+
+
+
+## Helpfulness of Information Sources{-}
+Among all visitors, the following information sources were most frequently rated as very or extremely helpful:
+
+- `r (infoTable$Item)[1]` (`r (infoTable$high)[1]`%)
+- `r (infoTable$Item)[2]` (`r (infoTable$high)[2]`%)
+- `r (infoTable$Item)[3]` (`r (infoTable$high)[3]`%)
+
+Visitors under the age of 35 most often used these information sources to learn about the refuge:
+
+- `r (infoTable18$Item)[1]` (`r (infoTable18$high)[1]`%)
+- `r (infoTable18$Item)[2]` (`r (infoTable18$high)[2]`%)
+- `r (infoTable18$Item)[3]` (`r (infoTable18$high)[3]`%)
+
+Visitors over the age of 35 most often used these information sources to learn about the refuge:
+
+- `r (infoTable35plus$Item)[1]` (`r (infoTable35plus$high)[1]`%)
+- `r (infoTable35plus$Item)[2]` (`r (infoTable35plus$high)[2]`%)
+- `r (infoTable35plus$Item)[3]` (`r (infoTable35plus$high)[3]`%)
+
+## Participation in Outdoor Activities{-}
+```{block2, activities, type='preamble1', echo=TRUE}
+Quality recreational experiences on refuges provide opportunities for visitors to connect with nature and the outdoors. Specifically, wildlife-dependent recreation, such as hunting, fishing, wildlife observation or photography, environmental education, and interpretation, can increase visitor appreciation and knowledge of natural resources [@USFWS2011]. The survey collected data on recreation participation at this refuge during the past 12 months and the primary activity of each visitor when they were contacted about the survey. Understanding recreation participation can help to guide the allocation of resources, including staff and infrastructure, to ensure visitors have quality, memorable experiences. Understanding visitor uses of the refuge can also aid in developing programs that facilitate meaningful interactions between visitors and refuge staff. Finally, such information can also help to pinpoint locations on the refuge where potential interactions over refuge uses may be perceived as incompatible by different visitor groups. Anticipating and preventing any social conflicts over refuge use can help create a quality experience and foster personal and emotional connections to the refuge and its resources [@USFWS2011].
+
+```
+
+## <span class="chap2">Visitor and Trip Characteristics</span> {-#trip}
+```{r visitor-characteristics, include = FALSE}
+```
+
+The most frequently participated in activities for all visitors were `r (primactProp$primact)[1]` (`r (primactProp$Freq)[1]`% of respondents), followed by `r (primactProp$primact)[2]` (`r (primactProp$Freq)[2]`% of respondents).  The primary activities reported at this refuge included:
+
+- `r (primactProp$primact)[1]` (`r (primactProp$Freq)[1]`%)
+- `r (primactProp$primact)[2]` (`r (primactProp$Freq)[2]`%)
+- `r (primactProp$primact)[3]` (`r (primactProp$Freq)[3]`%)
+
+
+```{r primactFig, echo=FALSE, fig.cap="Primary activities"}
+primactBar
+```
+
+
+Refuge visitors were asked about twenty different activities they may have participated in at this refuge during the 12 months prior to completing the survey as well as the primary activity they participated in during this visit. Frequencies of all twenty activities are included in (AppendixB).
+
+- `r (act12Table$Item)[1]` (`r (act12Table$high)[1]`%)
+- `r (act12Table$Item)[2]` (`r (act12Table$high)[2]`%)
+- `r (act12Table$Item)[3]` (`r (act12Table$high)[3]`%)
+
+Refuge visitors were also given the opportunity to write-in other activities if they were not included in the list of twenty activities. The full list of ‘other reported activities are included in (AppendixC). Some of the unique activities reported at this refuge included:
+
+- `r (act12Table$Item)[1]` (`r (act12Table$high)[1]`%)
+- `r (act12Table$Item)[2]` (`r (act12Table$high)[2]`%)
+- `r (act12Table$Item)[3]` (`r (act12Table$high)[3]`%)
+
+
+## Visiting This Refuge
+```{block2, visit-char, type='preamble1', echo=TRUE}
+Understanding trends in overall visitation to this refuge provides refuge staff with key information about its existing audiences. Specifically, the survey explored the number of times visitors have been to this refuge during the past year, including during which seasons, and the trips taken to other refuges or other public lands for the same primary activities. In combination with other trip characteristics (e.g., trip purpose, time spent traveling to and visiting the refuge), such information can be used to better understand activity and site fidelity (i.e., likelihood of repeating specific past behavior) or substitutability (i.e., likelihood of doing another activity or visiting somewhere else to participate in a preferred activity). Such information regarding site fidelity in particular can also help to identify the success of existing communications at enticing different groups of people to visit the refuge. Information on seasonality of visits can help refuge staff anticipate when certain recreational activities or programming is in high demand, an important informational need for allocating appropriate resources.
+```
+
+
+## Trip to This Refuge
+Visitor trip characteristics include:
+- Overall, `r single`% of respondents indicated they were alone and `r group`% of respondents were with others on thier most recent visit to this refuge (Table). On average, group size was `r mean(groupsize)`. The average group size for localls was `r localgrpSize` and nonlocals was `r nonlocgrpSize` (Table).
+- This refuge visit was the [primary, one of many, or spur of the moment] reason(s) for nonlocal visitors and the XX reason for local visitors.- #% are repeat visitors to this refuge, visiting an average of ## times/year, [???? mostly in the Xx and XX seasons]
+
+### Visits to This Refuge and Other Public Lands{-}
+In the last 12 months, how many times have you visited this refuge (including this visit)?
+
+- `r (refOne)`% of visitors visited the refuge only once in the last 12 months
+- `r (refTwo)`% of visitors visited the refuge two times in the last 12 months
+
+### Visits to other national wildlife refuges{-}
+In the last 12 months, how many times have you visited other national wildlife refuges?
+
+- `r (nwrZero)`% of visitors did not visit any other national wildlife refuges in the last 12 months
+- `r (nwrOne)`% of visitors visited other national wildlife refuges only once in the last 12 months
+- `r (nwrTwo)`% of visitors visited other national wildlife refuges two times in the last 12 months
+
+### Visits to other public lands{-}
+In the last 12 months, how many times have you visited other public lands (for example, national or state parks) to participate in the same primary activity as this visit?
+
+- `r (othZero)`% of visitors did not visit any other public lands
+- `r (othOne)`% of visitors visited other public lands only once
+- `r (othTwo)`% of visitors visited other public lands two times
+
+### Travel to this refuge{-}
+- Approximately how many hours/minutes (one-way) did you travel from your home to this refuge?
+

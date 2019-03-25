@@ -21,6 +21,42 @@ h1 {
  padding: 10px;
  text-align: left;
  }
+
+/* chapter heading color scheme 7-class Dark2 */
+/* display.brewer.pal(n = 8, name = 'Dark2') */
+/* #1b9e77 */
+/* #d95f02 */
+/* #7570b3 */
+/* #e7298a */
+/* #66a61e */
+/* #e6ab02 */
+/* #a6761d */
+
+.chap0 {
+ background-color: #41AD49;
+}
+.chap1 {
+ background-color: #1b9e77;
+}
+.chap2 {
+ background-color: #d95f02;
+}
+.chap3 {
+ background-color: #7570b3;
+}
+.chap4 {
+ background-color: #e7298a;
+}
+.chap5 {
+ background-color: #66a61e;
+}
+.chap6 {
+ background-color: #e6ab02;
+}
+.chap7 {
+ background-color: #a6761d;
+}
+
 h2 {
  color: #000000;
  font-size: 14pt;
@@ -43,14 +79,6 @@ h3 {
     -moz-columns: 3 100px;
     columns: 3 100px;
   }
-
-/* custom blocks using compound color scheme */
-/* #F0F7D4 beige */
-/* #B2D732 android green */
-/* #FE2712 tomato */
-/* #347B98 dark moderate blue */
-/* #092834 very dark blue*/
-/* https: //www.w3schools.com/colors/colors_compound.asp */
 
 
 .preamble1 {

@@ -96,6 +96,6 @@ nvs_subset <- nvs2018 %>%
 </div>
 
 ```{r fig.align='center', echo=FALSE}
-knitr::include_graphics(paste('refuge-info', params$RefugeName, 'cover.JPG', sep = '/'))
+knitr::include_graphics(paste('refuge-info', params$RefugeName, 'cover.JPG', sep = '/'), dpi = 5)
 ```
 

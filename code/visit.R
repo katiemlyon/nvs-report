@@ -1,4 +1,4 @@
-## @knitr visit
+## @knitr visitor-characteristics
 
 nvs2018 <- read.csv("data/nvs2018.csv")
 
@@ -12,119 +12,10 @@ library(tidyverse)
 #library(waffle)
 
 # function to round percentages to whole number
-round_df <- function(x, digits) {
-  # round all numeric variables
-  # x: data frame
-  # digits: number of digits to round
-  numeric_columns <- sapply(x, mode) == 'numeric'
-  x[numeric_columns] <-  round(x[numeric_columns], digits)
-  x
-}
+source("code/functions/round_df.R")
 
 #################
-# age
 
-table(nvs2018$AGECAT)
-age <- subset(nvs2018,!is.na(AGECAT))
-
-agePlot <- ggplot(data = age, aes(AGECAT)) +
-  geom_bar(aes(fill = factor(AGECAT))) + theme_classic() +
-  ggtitle("Age Categories")
-agePlot
-
-#################
-# gender
-
-table(nvs2018$GENDER)
-nvs2018$GENDER <-
-  droplevels(nvs2018$GENDER, exclude = c("1951", "1959")) #OSU data cleanup
-
-gender <- nvs2018$GENDER
-str(gender)
-levels(gender)
-
-genderTable <- table(gender)
-genderTable
-
-propMale = round_df((genderTable)["Male"] / sum(genderTable) * 100, 0)
-propMale
-
-propFemale = round_df((genderTable)["Female"] / sum(genderTable) * 100, 0)
-propFemale
-
-maleAge <- subset(nvs2018, select = c(GENDER, AGE))
-maleAge <-
-  maleAge[which(maleAge$GENDER == "Male" & maleAge$AGE < 999), ]
-range(maleAge$AGE)
-mean(maleAge$AGE)
-maleAveAge <- round_df(mean(maleAge$AGE), 0)
-maleAveAge
-
-femAge <- subset(nvs2018, select = c(GENDER, AGE))
-femAge <- femAge[which(femAge$GENDER == "Female" &
-                         femAge$AGE < 999), ]
-range(femAge$AGE)
-mean(femAge$AGE)
-femAveAge <- round_df(mean(femAge$AGE), 0)
-femAveAge
-
-###################
-# education
-
-str(nvs2018$SCHOOL)
-range(nvs2018$SCHOOL, na.rm = TRUE)
-nvs2018$SCHOOL[nvs2018$SCHOOL == "163"] <- NA #OSU data cleaning
-table(nvs2018$SCHOOL)
-
-#education <- subset(nvs2018, select = c(SCHOOL))
-education <- nvs2018$SCHOOL
-education <- education[!is.na(education)]
-
-#calculate mean
-educ <- mean(education)
-educ
-
-# round percent
-educ <- round_df(educ, 0)
-educ
-
-educLevel <- NA
-educLevel[educ < 12] <- "Less than HS"
-educLevel[educ >= 12 & educ <= 15] <- "High School/Some College"
-educLevel[educ >= 16 & educ <= 17] <- "College"
-educLevel[educ >= 18] <- "Graduate School"
-educLevel
-
-###################
-# income
-
-str(nvs2018$INCOME)
-#range(nvs2018$INCOME, na.rm = TRUE)
-#nvs2018$INCOME[nvs2018$INCOME == "999"] <- NA
-
-income <- nvs2018$INCOME
-income <- as.numeric(income)
-str(income)
-#income[income=="999"] <- NA
-income <- income[!is.na(income)]
-
-#calculate median income
-medIncome = median(income)
-medIncome
-
-incLevel <- NA
-incLevel[medIncome == 1] <- "Less than $10,000"
-incLevel[medIncome == 2] <- "$10,000-24,999"
-incLevel[medIncome == 3] <- "$25,000-$34,999"
-incLevel[medIncome == 4] <- "$35,000-$49,999"
-incLevel[medIncome == 5] <- "$50,000-$74,999"
-incLevel[medIncome == 6] <- "$75,000-$99,999"
-incLevel[medIncome == 7] <- "$100,000-$149,999"
-incLevel[medIncome == 8] <- "$150,000-$199,999"
-incLevel[medIncome == 9] <- "$200,000 or more"
-incLevel
-
-###################
 ## activities
 
 act12 <-
@@ -240,6 +131,18 @@ primactBar <- primactGrp3 %>%
   )
 primactBar
 
+################################
+
+## Visitor Center
+summary(nvs2018$VISCEN)
+
+#nvs2018["VISCEN"] <- lapply(nvs2018["VISCEN"] , factor)
+vcAct <- subset(nvs2018, select = c(ASKINFO:OTHERVIS))
+summary(vcAct)
+
+#vcOther <- na.omit(nvs2018$OTHERVISTXT)
+#vcOther <- sort(vcOther)
+#vcOther
 
 #############
 
@@ -395,17 +298,3 @@ seasonBar <- ggplot(season2, aes(x = items)) +
   scale_color_manual()
 
 seasonBar
-
-################################
-
-## Visitor Center
-summary(nvs2018$VISCEN)
-
-#nvs2018["VISCEN"] <- lapply(nvs2018["VISCEN"] , factor)
-vcAct <- subset(nvs2018, select = c(ASKINFO:OTHERVIS))
-summary(vcAct)
-
-#vcOther <- na.omit(nvs2018$OTHERVISTXT)
-#vcOther <- sort(vcOther)
-#vcOther
-
