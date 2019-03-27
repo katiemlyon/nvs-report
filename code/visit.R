@@ -1,4 +1,4 @@
-## @knitr visitor-characteristics
+## @knitr visit
 
 nvs2018 <- read.csv("data/nvs2018.csv")
 

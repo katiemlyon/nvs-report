@@ -1,4 +1,4 @@
-# Visitor Experiences {-#vistor-experiences:.chap3}
+#<h1 class=chap3>Visitor Experiences</h1>{-#vistor-experiences}
 ```{r satisf-setup, echo = FALSE}
 library(knitr)
 read_chunk('code/satisfaction.R')

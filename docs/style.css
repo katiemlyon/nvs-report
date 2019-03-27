@@ -21,16 +21,78 @@ h1 {
  padding: 10px;
  text-align: left;
  }
-
+h1.chap1 {
+ background-color: #1b9e77;
+ color: #FFFFFF;
+ font-size: 20pt;
+ font-weight: bolder;
+ line-height: 1.2;
+ padding: 10px;
+ text-align: left;
+ }
+ h1.chap2 {
+ background-color: #d95f02;
+ color: #FFFFFF;
+ font-size: 20pt;
+ font-weight: bolder;
+ line-height: 1.2;
+ padding: 10px;
+ text-align: left;
+ }
+ h1.chap3 {
+ background-color: #7570b3;
+ color: #FFFFFF;
+ font-size: 20pt;
+ font-weight: bolder;
+ line-height: 1.2;
+ padding: 10px;
+ text-align: left;
+ }
+ h1.chap4 {
+ background-color: #e7298a;
+ color: #FFFFFF;
+ font-size: 20pt;
+ font-weight: bolder;
+ line-height: 1.2;
+ padding: 10px;
+ text-align: left;
+ }
+ h1.chap5 {
+ background-color: #66a61e;
+ color: #FFFFFF;
+ font-size: 20pt;
+ font-weight: bolder;
+ line-height: 1.2;
+ padding: 10px;
+ text-align: left;
+ }
+  h1.chap6 {
+ background-color: #e6ab02;
+ color: #FFFFFF;
+ font-size: 20pt;
+ font-weight: bolder;
+ line-height: 1.2;
+ padding: 10px;
+ text-align: left;
+ }
+  h1.chap7 {
+ background-color: #a6761d;
+ color: #FFFFFF;
+ font-size: 20pt;
+ font-weight: bolder;
+ line-height: 1.2;
+ padding: 10px;
+ text-align: left;
+ }
 /* chapter heading color scheme 7-class Dark2 */
 /* display.brewer.pal(n = 8, name = 'Dark2') */
-/* #1b9e77 */
-/* #d95f02 */
-/* #7570b3 */
-/* #e7298a */
-/* #66a61e */
-/* #e6ab02 */
-/* #a6761d */
+/* 1 #1b9e77 */
+/* 2 #d95f02 */
+/* 3 #7570b3 */
+/* 4 #e7298a */
+/* 5 #66a61e */
+/* 6 #e6ab02 */
+/* 7 #a6761d */
 
 .chap0 {
  background-color: #41AD49;

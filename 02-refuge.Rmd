@@ -1,4 +1,4 @@
-# Refuge Description
+# Refuge Description{-}
 ```{r refuge-setup, echo = FALSE}
 data(nvs2018)
 library(knitr)

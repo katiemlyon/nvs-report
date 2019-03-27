@@ -1,4 +1,4 @@
-# Enhancing Future Visits to National Wildlife Refuges {#futvis}
+#<h1 class=chap6>Future Visits to National Wildlife Refuges</h1>{-#futvis} 
 
 ```{r include=FALSE}
 nvs2018 <- readr::read_csv("data/nvs2018.csv")
@@ -6,8 +6,7 @@ library(dplyr)
 library(likert)
 ```
 
-## Forecasting Future Recreation Demand at This Refuge{-}
-```{block2, type='preamble1', echo=TRUE}
+```{block2, future-preamble, type='preamble1', echo=TRUE}
 Gaining a sense of what would encourage visitors to return (or what may prevent them from returning) would be useful information for managers, planners, and visitor services personnel. For example, some visitors may prefer increased infrastructure, while others may want more access to opportunities on the refuge. However, any management action aimed at increasing recreation participation should be considered in relation to possible effects on different visitor groups. For example, visitors may report that more infrastructure would lead to increased participation in a particular primary activity (e.g., birdwatching, fishing), but that particular increased participation could also result in others feeling crowded, subsequently reducing their participation. Thus, results in this section should be considered as part of a network of potential decisions that could affect different visitor groups disproportionally if not carefully considered in full.  
 ```
 

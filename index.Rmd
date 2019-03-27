@@ -1,5 +1,8 @@
 --- 
-title: "`r paste('National Wildlife Refuge Visitor Survey:  Individual Refuge Results for ', params$RefugeName)`"
+params: 
+  RefugeName: "Tennessee National Wildlife Refuge"
+
+title: "National Wildlife Refuge Visitor Survey: Individual Refuge Results for `r paste(params$RefugeName)`"
 author: "By Alia M. Dietsch, Colleen M. Hartel, Katie M. Lyon, and Natalie R. Sexton"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
@@ -15,8 +18,6 @@ description: "These individual refuge results provide a summary of trip characte
 cover-image: refuge/cover.jpg
 always_allow_html: yes
 
-params: 
-  RefugeName: "Dungeness National Wildlife Refuge"
   
 ---
 
@@ -45,7 +46,7 @@ library(ggplot2)
 library(ggstance)
 library(ggthemes)
 #library(glue)
-#library(grid)
+library(grid)
 library(gridExtra)
 library(formattable)
 library(kableExtra)
@@ -53,12 +54,14 @@ library(lattice)
 library(leaflet)
 library(likert)
 library(Matrix)
+library(mosaic)
 library(plotly)
 #library(questionr)
 library(reshape2)
 library(scales)
 library(tidyr)
-library(tinytex)
+#library(tinytex)
+library(XML)
 library(xtable)
 #library(waffle)
 #library(extrafont)

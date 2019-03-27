@@ -7,7 +7,7 @@ read_chunk('code/visit.R')
 read_chunk('code/info.R')
 ```
 
-```{r visitor-characteristics, include = FALSE}
+```{r visit, include = FALSE}
 ```
 
 ```{r info-source, include = FALSE}

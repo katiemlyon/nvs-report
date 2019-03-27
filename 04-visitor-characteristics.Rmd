@@ -1,4 +1,4 @@
-# Visitor and Trip Characteristics {-#visitor-characteristics}
+# Visitor Characteristics{-}
 
 ```{r visitor-setup, echo = FALSE}
 library(knitr)
@@ -6,9 +6,8 @@ read_chunk('code/demographics.R')
 source("code/functions/round_df.R")
 ```
 
-## Visitor Characteristics{-#visit}
-```{block2, visitor-characteristics, type='preamble1', echo=TRUE}
-In particular, depictions of the demographics (e.g., age, economic status, education, race and ethnicity) of both local and non-local visitors can inform refuge managers about which groups of people are directly benefitting from what the refuge currently offers. This type of visitor data can then be compared with future visitor data to assess changes in visitation due to various conditions (e.g., shifts in climate, resource, staff, or infrastructure). Visitor demographics can also be compared to the demographic composition of nearby communities using data from U.S. Census, the American Community Survey, or through online tools such as Social Explorer (www.socialexplorer.com) to assess whether the nearby community composition is reflected within refuge visitation, which is a critical component of getting to know and relate to the community [@USFWS2014]. Such data can also determine what new audiences from the local community - if not currently reflected in the visitor population - could potentially be engaged through appropriately-targeted outreach efforts (e.g., building partnerships, enhancing stepping stones of engagement; [@USFWS2014]).
+```{block2, visitor-preamble, type='preamble1', echo=TRUE}
+Depictions of the demographics (e.g., age, economic status, education, race and ethnicity) of both local and non-local visitors can inform refuge managers about which groups of people are directly benefitting from what the refuge currently offers. This type of visitor data can then be compared with future visitor data to assess changes in visitation due to various conditions (e.g., shifts in climate, resource, staff, or infrastructure). Visitor demographics can also be compared to the demographic composition of nearby communities using data from U.S. Census, the American Community Survey, or through online tools such as Social Explorer (www.socialexplorer.com) to assess whether the nearby community composition is reflected within refuge visitation, which is a critical component of getting to know and relate to the community [@USFWS2014]. Such data can also determine what new audiences from the local community - if not currently reflected in the visitor population - could potentially be engaged through appropriately-targeted outreach efforts (e.g., building partnerships, enhancing stepping stones of engagement; [@USFWS2014]).
 ```
 
 ## Demographics{-}
@@ -24,7 +23,7 @@ Visitors to this refuge can be characterized as follows:
 See (AppendixB) for more demographic information. 
 
 
-```{r, echo = FALSE}
+```{r agePyramidFig, echo=FALSE, fig.cap="Age Distribution of Visitors to this Refuge"}
 agePyramid <- grid.arrange(gg.female,
                            gg.male,
                            widths=c(0.4,0.6),
