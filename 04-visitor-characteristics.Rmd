@@ -17,11 +17,14 @@ Depictions of the demographics (e.g., age, economic status, education, race and 
 Visitors to this refuge can be characterized as follows: 
 
 - `r propMale`% male (with an average age of `r maleAveAge` years) and `r propFemale`% female (with an average age of `r femAveAge` years)
+- ##% first race, #% second race, #% third race
+- #% Hispanic (don’t’ need to list nonhispanic)
 - `r (educ)` years of formal education (equivalent to `r (educLevel)`)
-- `r (incLevel)` median level of income
+- `r (incLevel)` median income
+- #% local, #% nonlocal (DEFINE)
+	
 
-See (AppendixB) for more demographic information. 
-
+### Age/Gender
 
 ```{r agePyramidFig, echo=FALSE, fig.cap="Age Distribution of Visitors to this Refuge"}
 agePyramid <- grid.arrange(gg.female,
@@ -36,3 +39,23 @@ agePyramid
 ```
 
 TODO: Line up age categories
+
+### Race and Ethnicity
+MAKE A MULTIRACIAL VARIABLE FOR THOSE VISITORS WHO CHOOSE MORE THAN ONE. TWO COLUMNS: 1) PREVIOUS YEARS DATA (IF AVAILABLE) 2) CURRENT DATA 3) US CENSUS. BECAUSE QUESTION ASKED DIFFERENTLY, THINKING DON’T SHOW PREV YEAR’S DATA.
+
+### Income
+
+MEDIAN INCOME
+
+### Education
+
+AVERAGE EDUCATION-
+BAR CHART-FREQUENCIES CATEGORIZED
+<HS, HS, COLLEGE, GRAD
+
+
+### Local/Nonlocal Visitors
+
+WHERE VISITORS ARE FROM—PIE CHART OR DONUT
+
+

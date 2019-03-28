@@ -3,12 +3,16 @@
 
 nvs2018 <- read.csv("data/nvs2018.csv")
 
+library(tidyr)
+library(dplyr)
 library(likert)
 source("code/functions/round_df.R")
 
 str(nvs2018$WHITE)
 
 ethnicity <- subset(nvs2018, select = c(WHITE:OTHERETH))
+ethnicity <- na.omit(ethnicity)
+str(ethnicity)
 #ethnicity[ethnicity == "9"] <- NA
 
 names(ethnicity) = c(
@@ -54,6 +58,8 @@ ethTable[with(ethTable, order(-high)),] %>% select (Item, high)
 ###################
 # race - single variable
 eth <- subset(nvs2018, select = c(WHITE:OTHERETH))
+str(eth)
+
 eth[eth == "9"] <- NA
 
 eth$newvar <- rowSums(eth == "Yes")
@@ -68,8 +74,17 @@ eth$Race[eth$newvar == 1 & eth$PACISL == "Yes"] <- "Pacific Islander"
 eth$Race[eth$newvar == 1 & eth$OTHERETH == "Yes"] <- "Other"
 table(eth$Race)
 
-race = eth$Race
-
+race <- table(eth$Race)
+names(race) = c(
+  "White",
+  "Hispanic, Latino, or Spanish",
+  "Black or African American",
+  "Asian",
+  "American Indian or Alaska Native",
+  "Middle Eastern or North African",
+  "Native Hawaiian or Other Pacific Islander",
+  "Some other race or ethnicity"
+)
 ###################
 
 ETH$Race <- NA
@@ -121,5 +136,22 @@ ggplot(ETH, aes(x = ETH, y = Proportion, fill = Race)) +
   xlab(NULL)
 
 ###############
+library(tidyr)
+library(dplyr)
 
+# Add individual ID to each row
+p = mutate(p, id = 1:n())
+
+p %>%
+  mutate(p.hispanic = ifelse(p.hispanic == "No", NA, "Hispanic or Latino")) %>% # change p.hispanic column
+  gather(category, answer, p.hispanic:p.race_other, na.rm = TRUE) %>%
+  filter(answer != "") %>% # get rid of blanks (if were NA would have removed in "gather")
+  group_by(id) %>%
+  # Create new variable p.race and p.pop based on rules
+  mutate(p.race = ifelse(n_distinct(answer) > 1, "Two or more races", answer),
+         p.poc = as.integer(p.race == "White, European, Middle Eastern, or Caucasian")) %>%
+  slice(1) %>% # take only 1 record for the duplicate id's
+  select(-category, - answer) %>% # remove columns that aren't needed
+  left_join(p, ., by = "id") %>% # join new columns with original dataset
+  select(-id) # remove ID column if not wanted
 

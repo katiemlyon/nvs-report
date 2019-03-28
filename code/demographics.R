@@ -161,8 +161,11 @@ incLevel
 
 ethnicity <- subset(nvs2018, select = c(WHITE:OTHERETH))
 
+
+
+
 ######################################
-# income
+# Age/Gender Pyramid
 ######################################
 
 # create a data frame

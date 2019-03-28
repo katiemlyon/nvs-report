@@ -146,56 +146,6 @@ summary(vcAct)
 
 #############
 
-#nvs2018["TRIPPURP"] <- lapply(nvs2018["TRIPPURP"] , factor)
-
-# Group composition
-group <- subset(nvs2018, select = c(ADULTNUM:MINORNUM))
-
-groupsize <- rowSums (group, na.rm = TRUE, dims = 1)
-groupsize
-range(groupsize) #OSU cleanup 43814
-
-groupsizeProp <- prop.table(table(groupsize)) * 100
-groupsizeProp
-str(groupsizeProp)
-
-single <- round_df(groupsizeProp["1"], 0)
-single #percent that were alone
-
-group <- data.frame(groupsizeProp) #convert to data frame
-group <- subset(group, groupsize != "1") #groupsize greater than 1
-group <-
-  round_df(sum(group$Freq), 0) #add proportions for groups greater than 1
-group #percent that were in a group
-
-adults <- prop.table(table(nvs2018$ADULTNUM)) * 100
-adults
-
-# Group composition - Locals
-
-localgrp <- subset(nvs2018, LOCALAREA == "Local",
-                   select = ADULTNUM:MINORNUM)
-str(localgrp)
-localgrp <- na.omit(localgrp)
-range(localgrp$ADULTNUM)
-range(localgrp)
-
-localgrp$grpSize <- rowSums (localgrp, na.rm = TRUE)
-range(localgrp$grpSize)
-localgrpSize <- round_df(mean(localgrp$grpSize))
-localgrpSize
-
-# Group composition - Nonlocals
-
-nonlocgrp <- subset(nvs2018, LOCALAREA == "Nonlocal",
-                    select = ADULTNUM:MINORNUM)
-head(nonlocgrp)
-nonlocgrpSize <- rowSums (nonlocgrp, na.rm = TRUE)
-range(nonlocgrpSize)
-nonlocgrpSize <- subset(nonlocgrpSize, nonlocgrpSize < 999)
-range(nonlocgrpSize)
-nonlocgrpSize <- round_df(mean(nonlocgrpSize))
-nonlocgrpSize
 
 #############
 ## Visits to Public Lands
@@ -255,46 +205,3 @@ visit_levels <- names(visits)[order(visits)]
 str(visits)
 
 ###################
-# Season
-
-season <-
-  subset(nvs2018, select =  c(SPRVIS, SUMVIS, FALLVIS, WINTVIS))
-str(season)
-season$SPRVIS <- as.factor(season$SPRVIS)
-season$SUMVIS <- as.factor(season$SUMVIS)
-season$FALLVIS <- as.factor(season$FALLVIS)
-season$WINTVIS <- as.factor(season$WINTVIS)
-seasonL <- likert(season)
-seasonT <- summary(season)
-str(seasonT)
-seasonT
-
-
-nvs2018 %>%
-  select(SPRVIS:WINTVIS) %>%
-  na.omit -> season
-str(season)
-
-names(season) = c("Spring", "Summer", "Fall", "Winter")
-str(season)
-
-season_levels <- names(season)
-season_levels  # notice the changed order of factor levels
-
-season %>%
-  gather(key = items, value = answer) %>%
-  mutate(answer = factor(answer),
-         items = factor(items)) -> season2
-
-season2$items <- factor(season2$items, levels = season_levels)
-
-seasonBar <- ggplot(season2, aes(x = items)) +
-  geom_bar(aes(fill = answer), position = "fill", show.legend = FALSE)+
-  coord_flip() +
-  scale_x_discrete(limits = rev(levels(season2$items))) +
-  labs(y = "Percent Visited in Last 12 Months",
-       x = "Season") +
-  scale_fill_brewer(palette = "Greens") +
-  scale_color_manual()
-
-seasonBar

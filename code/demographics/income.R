@@ -64,3 +64,6 @@ names(incomeL) = c(
   "$150,000-$199,999",
   "$200,000 or more"
 )
+#######
+# MEDIAN INCOME (INCLUDE COMPARE TO US CENSUS)
+
