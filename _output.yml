@@ -2,28 +2,6 @@ bookdown::gitbook:
   css: css/style.css
   split_by: chapter
   split_bib: FALSE
-  config:
-    toc:
-      collapse: subsection
-      scroll_highlight: yes
-      before: |
-        <li><a href="./">Visitor Survey Report</a></li>
-      after: null
-    toolbar:
-      position: fixed
-    edit : null
-    download: ["pdf", "epub"]
-    search: yes
-    fontsettings:
-      theme: white
-      family: sans
-      size: 2
-    sharing:
-      facebook: yes
-      twitter: yes
-      google: yes
-      linkedin: no
-      instapaper: no
 #bookdown::epub_book: default
 rmarkdown::md_document:
         toc:true
