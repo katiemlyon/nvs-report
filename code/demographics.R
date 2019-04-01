@@ -125,6 +125,21 @@ educLevel[educ >= 16 & educ <= 17] <- "College"
 educLevel[educ >= 18] <- "Graduate School"
 educLevel
 
+
+# education plot
+education <- subset(nvs2018, select = EDUCATION)
+education <- na.omit(education)
+
+edPlot <- ggplot(education) +
+  stat_count(mapping = aes(x=EDUCATION, y=..prop.., group=1)) +
+  labs(x = "Education",
+       y = "Percent",
+       title = "Education") +
+  coord_flip() +
+  theme(plot.background = element_blank()
+        ,panel.grid.major = element_blank()
+        ,panel.grid.minor = element_blank()
+        ,panel.border = element_blank())
 ######################################
 # income
 ######################################
@@ -294,3 +309,4 @@ agePyramid <- grid.arrange(gg.female,
 )
 
 agePyramid
+

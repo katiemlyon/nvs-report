@@ -39,9 +39,4 @@ kable(spendTable,
   )
 ```
 
-```{r echo=FALSE, fig.cap="Total visitor expenditures in local communities and at `r paste(params$RefugeName)` expressed in dollars per person per day"}
-spendPlot + theme_fivethirtyeight() + 
-  scale_fill_brewer(palette = "Spectral")
-```
-
 

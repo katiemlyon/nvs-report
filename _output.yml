@@ -24,8 +24,6 @@ bookdown::gitbook:
       google: yes
       linkedin: no
       instapaper: no
-bookdown::html_chapters:
-  css: [css/style.css, css/style1.css]
-bookdown::epub_book: default
+#bookdown::epub_book: default
 rmarkdown::md_document:
         toc:true
