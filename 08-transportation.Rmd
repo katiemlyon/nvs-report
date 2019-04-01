@@ -1,4 +1,4 @@
-#<h1 class=chap4>Travel, Transportation and Access</h1>{-#transportation}
+# Travel, Transportation and Access{-#transportation}
 
 ```{r trans-setup, echo = FALSE}
 library(knitr)
@@ -25,15 +25,59 @@ The key mode of transportation used by visitors to travel to this refuge was `r 
 
 A majority of visitors to `r paste(params$RefugeName)` thought transportation-related items were important Figure \@ref(fig:trans-imp). They were most satisfied with x and least satisfied with y Figure \@ref(fig:trans-sat).
 
-```{r trans-imp, echo=FALSE, fig.cap=transImpTitle}
-plot(transImp, centered=TRUE)
-```
+
+
+
+
+
+
+
+•	Average travel to this refuge is [AVG#hours/minutes] for local visitors and [AVG#hours/minutes] for nonlocal visitors, with most nonlocal visitors coming from [STATE1st] [#%], [STATE2ND] [#%], AND [STATE3RD] [#%]. QUESTION: ARE PERCENTS TYPICALLY HIGH ENOUGH TO LIST THREE?
+•	Visitors primarily used [MODE1ST] [#%] and [MODE2nd] [#%] to travel to the refuge
+•	Once on the refuge, visits primarily used [MODE1st] [#%] and [MODE2nd] [#%]
+
+VISUALS
+WHERE VISITORS TRAVEL FROM
+https://www.r-graph-gallery.com/connection-map/
+https://www.r-graph-gallery.com/chloropleth-map/ 
+
+MODES OF TRANSPORTATION
+BAR CHART SHOWING “TO REFUGE” AND “ON REFUGE” FOR TOP 5 OR POSSIBLY FOR ALL (NO “OTHER”) 
+Satisfaction with Transportation Safety and Ease of Access
+MAY MOVE SOME THINGS IN THIS SECTION
+
+BULLETS: 
+Visitors are satisfied with transportation safety and access as follows:
+•	Getting to the refuge, [#%] satisfied with directional signs on highways, {#%] satisfied with safety of entrances and exits, and [#%} satisfied with condition of roadway bridges (QUESTION IS THIS OFF OR ON REFUGE??)
+•	Getting around the refuge, [#%] satisfied with …. List all 6
+•	Access for recreation, [#%] satisfied with …. List all 5
+•	This refuge may have room for improvement on x, y z (this would only be included if not at all, slightly and moderately are >25???% . CAN WE AUTOMATE THIS?
+
+VISUALS
+
+### Off refuge/getting to refuge
+- Signs on highways directing you to this refuge
+- Safety of refuge road entrances and exists
+- Condition of Bridges on roadways
 
 ```{r trans-sat, echo=FALSE, fig.cap=transSatTitle}
 plot(transSat, centered=TRUE)
 ```
 
+### Getting around refuge
+- Condition of Refuge Roads
+- Signs directing you around on refuge
+- Safety of driving condition
+- Number of places to pull over on refuge
+- Condition of Refuge parking areas
+- Number of parking spots
 
+### Access for recreation
+- Condition of trails and boardwalks
+- Safety of trails/roads for nonmotorized users
+- Signs directing you on trails
+- Access for people with disabilities or difficulty walking
+- Condition of boat launches
 
 ## Alternative Transportation Options{-}
 ```{r altTrans, include = FALSE}

@@ -1,31 +1,33 @@
-# EDUCATION
+library(ggplot2)
+
+#load functions
+source("code/functions/calc_pct.R")
+source("code/functions/round_df.R")
+
+#read data
+nvs2018 <- read.csv("data/nvs2018.csv")
+
+###########################################
+# Education
+###########################################
+
 str(nvs2018$SCHOOL)
 range(nvs2018$SCHOOL, na.rm=TRUE)
-nvs2018$SCHOOL[nvs2018$SCHOOL=="163"] <- NA #OSU data cleaning
 table(nvs2018$SCHOOL)
 
 #education <- subset(nvs2018, select = c(SCHOOL))
 education <- nvs2018$SCHOOL
 education <- education[!is.na(education)]
 
-#calculate mean
+# calculate mean education level
 educ = mean(education)
 educ
 
-# function to round percentages to whole number
-round_df <- function(x, digits) {
-  # round all numeric variables
-  # x: data frame 
-  # digits: number of digits to round
-  numeric_columns <- sapply(x, mode) == 'numeric'
-  x[numeric_columns] <-  round(x[numeric_columns], digits)
-  x
-}
-
-# round percent
-educ <- round_df(educ, 0) 
+# round percent to whole number
+educ <- round_df(educ, 0)
 educ
 
+# specify education levels for output
 educLevel <- NA
 educLevel[educ < 12] <- "Less than HS"
 educLevel[educ >= 12 & educ <= 15] <- "High School/Some College"
@@ -46,35 +48,26 @@ edTitle <- "Education"
 edTable <- summary(edProp)
 str(edTable)
 
-edPlot <- ggplot(data=subset(education, !is.na(SCHOOL)), aes(SCHOOL)) + 
+###########
+education <- nvs2018$SCHOOL
+edPlot <- ggplot(data=subset(education, !is.na(SCHOOL)), aes(SCHOOL)) +
   geom_bar(aes) +
   ggtitle("Education")
 edPlot
 
 
-
-
-# create educ categories
-attach(nvs2018)
-nvs2018$EDCAT[SCHOOL < 12] <- "Less than HS"
-nvs2018$EDCAT[SCHOOL >= 12 & SCHOOL <= 15] <- "High School/Some College"
-nvs2018$EDCAT[SCHOOL >= 16 & SCHOOL <= 17] <- "College"
-nvs2018$EDCAT[SCHOOL >= 18] <- "Graduate School"
-detach(nvs2018)
-table(nvs2018$EDCAT)
-
-# What are the education levels? 
-# EDCAT is a factor (i.e., categorical) variable, a bar chart 
+# What are the education levels?
+# EDCAT is a factor (i.e., categorical) variable, a bar chart
 # is a great visualization to use.
 #
-ggplot(titanic, aes(x = Survived)) + 
+ggplot(titanic, aes(x = Survived)) +
   geom_bar()
 
 # If you really want percentages.
 prop.table(table(titanic$Survived))
 
 # Add some customization for labels and theme.
-ggplot(titanic, aes(x = Survived)) + 
+ggplot(titanic, aes(x = Survived)) +
   theme_bw() +
   geom_bar() +
   labs(y = "Passenger Count",

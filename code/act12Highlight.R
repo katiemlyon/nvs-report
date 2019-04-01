@@ -1,3 +1,5 @@
+nvs2018 <- read.csv("data/nvs2018.csv")
+
 #==============
 # LOAD PACKAGES
 #==============
@@ -40,7 +42,7 @@ primact %>%
   mutate(highlight_flag = ifelse(primact == 'Hiking/Walking', T, F)) %>%
   ggplot(aes(x = primact)) +
   geom_bar(aes(fill = highlight_flag)) +
-  scale_fill_manual(values = c('#595959', 'red'))
+  scale_fill_manual(values = c('#595959', 'orange'))
 
 #===============================
 # BAR CHART WITH HIGHLIGHTED BAR
@@ -72,3 +74,4 @@ primactBar <- primact %>%
         ,panel.border = element_blank()
   )
 primactBar
+

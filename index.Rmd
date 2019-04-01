@@ -4,7 +4,6 @@ params:
 
 title: "National Wildlife Refuge Visitor Survey: Individual Refuge Results for `r paste(params$RefugeName)`"
 author: "By Alia M. Dietsch, Colleen M. Hartel, Katie M. Lyon, and Natalie R. Sexton"
-date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -15,7 +14,6 @@ lot: yes
 lof: yes
 site: bookdown::bookdown_site
 description: "These individual refuge results provide a summary of trip characteristics and experiences of a sample of visitors to `r paste(params$RefugeName)` during 2018 and are intended to inform decision-making efforts related to visitor services and transportation at this refuge."
-cover-image: refuge/cover.jpg
 always_allow_html: yes
 
   
@@ -98,7 +96,7 @@ nvs_subset <- nvs2018 %>%
 ---`r paste('A visitor to ', params$RefugeName)`
 </div>
 
-```{r fig.align='center', echo=FALSE}
-knitr::include_graphics(paste('refuge-info', params$RefugeName, 'cover.JPG', sep = '/'), dpi = 5)
+```{r cover-image, out.width="100%", fig.align='center', echo=FALSE}
+knitr::include_graphics(paste('refuge-info', params$RefugeName, 'cover.JPG', sep = '/'))
 ```
 

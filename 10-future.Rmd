@@ -1,4 +1,4 @@
-#<h1 class=chap6>Future Visits to National Wildlife Refuges</h1>{-#futvis} 
+# Future Visits to National Wildlife Refuges{-#futurevis} 
 
 ```{r include=FALSE}
 nvs2018 <- readr::read_csv("data/nvs2018.csv")

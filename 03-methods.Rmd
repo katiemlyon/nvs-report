@@ -1,4 +1,4 @@
-# Visitor Sampling and Surveying Methods{-#methods}
+# Sampling and Surveying Methods{-#methods}
 
 ## Contacting Visitors{-}
 Refuge staff identified two separate 14-day sampling periods, and one or more locations at which to sample, that best reflected the diversity of use and specific visitation patterns of each participating refuge. A standardized sampling schedule was created for all refuges that included eight randomly selected sampling shifts during each of the two sampling periods. Sampling shifts were four hour time bands, stratified across AM and PM as well as weekend and weekdays. In coordination with refuge staff, any necessary customizations were made to the standardized schedule to accommodate the identified sampling locations and to address specific spatial and temporal patterns of visitation.
@@ -16,7 +16,8 @@ All visitors that agreed onsite to fill out a survey received the same sequence 
 
 Each mailing included instructions for completing the survey online, so visitors had an opportunity to complete an online survey with each mailing. Those visitors indicating a preference for Spanish were sent Spanish versions of all correspondence (including the survey). Online survey data were exported and paper survey data were entered into Microsoft Excel using a standardized survey codebook and data entry procedure. All survey data were analyzed using Statistical Package for the Social Sciences (SPSS, v.23) software.^[Any use of trade, firm, or product names is for descriptive purposes only and does not imply endorsement by the U.S. Government]
 
-## Sampling at This Refuge{-}
+## Sampling at `r paste(params$RefugeName)`{-}
+
 A total of `r length(nvs2018)` visitors agreed to participate in the survey during the two sampling periods at the identified locations at `r paste(params$RefugeName)` Table \@ref(tab:sampling-dates). In all, `r length(nvs2018)` visitors completed the survey for a `r length(nvs2018)/length(nvs2018)*100`% response rate, and 10% margin of error at the 95% confidence level.^[A margin of error of ± 5% at a 95% confidence level, for example, means that, if a reported percentage is 55%, then 95 out of 100 times, that sample estimate would fall between 50% and 60% if the same question was asked in the same way. The margin of error is calculated with an 80/20 response distribution, assuming that for a given dichotomous choice question, approximately 80% of respondents would select one choice and 20% would select the other choice [@salant1994].]
 
 Table: (\#tab:sampling-dates)

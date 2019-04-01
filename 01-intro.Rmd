@@ -1,4 +1,4 @@
-# Introduction {-#intro}
+# Introduction {-}
 
 The National Wildlife Refuge System (Refuge System) plays a unique role in connecting current and future generations to our nation’s rich natural heritage. A national wildlife refuge visit can instill a lasting passion for wildlife and wild lands. A carefully designed set of amenities, services, and recreational opportunities contributes to and enhances the visitor experience, making these important connections possible. Opportunities for outdoor recreation draw millions of people each year to national wildlife refuges. Many visitors enjoy hiking, paddling, wildlife viewing or nature photography. Others take part in heritage sports such as hunting and fishing. All these activities offer visitors a chance to unplug from the stresses of modern life and reconnect with their natural surroundings.
 

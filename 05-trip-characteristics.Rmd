@@ -1,8 +1,19 @@
-# <h1 class=chap2>Trip Characteristics</h1>{-}
+```yaml
+---
+output:
+  html_document:
+    theme: null
+    highlight: null
+    css: style2.css
+---
+```
+# Trip Characteristics{-}
+```
 
 ```{r trip-setup, echo = FALSE}
 library(knitr)
 read_chunk('code/info.R')
+read_chunk('code/group.R')
 read_chunk('code/visit.R')
 #read_chunk('code/socialMedia.R')
 ```
@@ -16,8 +27,6 @@ Effective communication with the public is critical for managing and enhancing v
 ```
 The survey asked which information sources visitors used to learn about the refuge and its resources and the degree to which each information source was helpful. Visitors across different ages may use different information sources to learn about this refuge and its resources. The full list of information sources presented to visitors is contained in (AppendixB).
 
-<div class="row">
-<div id="left">
 ### Learning about This Refuge{-}
 
 Visitors across different ages may use different information sources to learn about this refuge and its resources. The full list of information sources presented to visitors is contained in Appendix B. 
@@ -40,8 +49,11 @@ Visitors over the age of 35 most often used these information sources to learn a
 - `r (infoTable35plus$Item)[2]` (`r (infoTable35plus$high)[2]`%)
 - `r (infoTable35plus$Item)[3]` (`r (infoTable35plus$high)[3]`%)
 
-</div>
-<div id="right">
+### Use of Social Media{-}
+
+-	A CHART LIKE BELOW BY AGE GROUP
+-	BRING IN THE CLIP ART
+-	USE THE FOLLOWING STATIC ORDER FOR ALL: FACEBOOK, INSTAGRAM, SNAPCHAT, FLICKR, TWITTER, YOUTUBE/VIMEO (COMBINE)
 
 ### Sharing Refuge Experiences{-}
 
@@ -64,10 +76,6 @@ Visitors over the age of 35 most often used these social media outlets to share 
 - `r (smTable$Item)[1]` (`r (smTable$high)[1]`%)
 - `r (smTable$Item)[2]` (`r (smTable$high)[2]`%)
 - `r (smTable$Item)[3]` (`r (smTable$high)[3]`%)
-</div>
-</div>
-
-
 
 ## Helpfulness of Information Sources{-}
 Among all visitors, the following information sources were most frequently rated as very or extremely helpful:
@@ -126,20 +134,28 @@ Refuge visitors were also given the opportunity to write-in other activities if 
 ```{block2, visit-preamble, type='preamble1', echo=TRUE}
 Understanding trends in overall visitation to this refuge provides refuge staff with key information about its existing audiences. Specifically, the survey explored the number of times visitors have been to this refuge during the past year, including during which seasons, and the trips taken to other refuges or other public lands for the same primary activities. In combination with other trip characteristics (e.g., trip purpose, time spent traveling to and visiting the refuge), such information can be used to better understand activity and site fidelity (i.e., likelihood of repeating specific past behavior) or substitutability (i.e., likelihood of doing another activity or visiting somewhere else to participate in a preferred activity). Such information regarding site fidelity in particular can also help to identify the success of existing communications at enticing different groups of people to visit the refuge. Information on seasonality of visits can help refuge staff anticipate when certain recreational activities or programming is in high demand, an important informational need for allocating appropriate resources.
 ```
-
-
 ## Trip to This Refuge{-}
+
 Visitor trip characteristics include: 
 
-- Overall, `r single`% of respondents indicated they were alone and `r group`% of respondents were with others on thier most recent visit to this refuge (Table). On average, group size was `r mean(groupsize)`. The average group size for locals was `r localgrpSize` and nonlocals was `r nonlocgrpSize` (Table).
-- This refuge visit was the [primary, one of many, or spur of the moment] reason(s) for nonlocal visitors and the XX reason for local visitors.
-- #% are repeat visitors to this refuge, visiting an average of ## times/year, [???? mostly in the Xx and XX seasons]
 
-### Visits to This Refuge and Other Public Lands{-}
-In the last 12 months, how many times have you visited this refuge (including this visit)?
+### Trip Purpose{-}
 
-- `r (refOne)`% of visitors visited the refuge only once in the last 12 months
-- `r (refTwo)`% of visitors visited the refuge two times in the last 12 months
+```{r trip-purpose, echo=FALSE}
+grid.arrange(textGrob("Type of Trip to This Refuge",
+                                     gp = gpar(fontsize = 20, fontface = "bold")),
+                            tripPurpBar,
+                            heights = c(0.1, 1))
+```
+
+### Group Size{-}
+DONUT--
+% ADULT ONLY, 
+%ADULT/KID MIXED 
+
+OR 
+
+BAR CHART WITH GROUP SIZE—SOLO, SMALL, MED, LARGE;  MAYBE COMBINE??
 
 ### Visits to other national wildlife refuges{-}
 In the last 12 months, how many times have you visited other national wildlife refuges?
@@ -156,38 +172,6 @@ In the last 12 months, how many times have you visited other public lands (for e
 - `r (othTwo)`% of visitors visited other public lands two times
 
 ### Travel to this refuge{-}
-- Approximately how many hours/minutes (one-way) did you travel from your home to this refuge?
 
 
-### USE OF SOCIAL MEDIA:
 
--	A CHART LIKE BELOW BY AGE GROUP
--	BRING IN THE CLIP ART
--	USE THE FOLLOWING STATIC ORDER FOR ALL: FACEBOOK, INSTAGRAM, SNAPCHAT, FLICKR, TWITTER, YOUTUBE/VIMEO (COMBINE)
-
-## Trip to This Refuge
-
-Visitor trip characteristics include:
-•	Group size averaged ## with #% adults and #% children WITH THE ABOVE HEADING, THIS STAT IS OUT OF PLACE
-•	This refuge visit was the [primary, one of many, or spur of the moment] reason(s) for nonlocal visitors and the XX reason for local visitors.
-•	#% are repeat visitors to this refuge, visiting an average of ## times/year, mostly in the [season1] [#%] and [season 2] {#%]
-•	For day visitors, average time on refuge is X. REVISE THIS BASED ON VISUAL WE COME UP WITH
-
-### Group Size
-DONUT--
-% ADULT ONLY, 
-%ADULT/KID MIXED 
-
-OR 
-
-BAR CHART WITH GROUP SIZE—SOLO, SMALL, MED, LARGE;  MAYBE COMBINE??
-
-
-### Trip Purpose
-
-```{r agePyramidFig, echo=FALSE, fig.cap="Primary Purpose of Trip to this Refuge"}
-grid.arrange(textGrob("Primary Purpose of Trip to this Refuge", 
-                      gp = gpar(fontsize = 2.5*11, fontface = "bold")), 
-             tripPurpBar, 
-             heights = c(0.1, 1))
-```

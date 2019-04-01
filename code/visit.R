@@ -1,18 +1,18 @@
 ## @knitr visit
 
-nvs2018 <- read.csv("data/nvs2018.csv")
-
 library(plyr)
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
+library(grid)
+library(gridExtra)
 library(likert)
-#library(raster)
 library(tidyverse)
-#library(waffle)
 
 # function to round percentages to whole number
 source("code/functions/round_df.R")
+
+nvs2018 <- read.csv("data/nvs2018.csv")
 
 #################
 
@@ -145,21 +145,157 @@ summary(vcAct)
 #vcOther
 
 #############
+# Trip Purpose
+
+tripPurp <- na.omit(nvs2018$TRIPPURP)
+tripPurp <- as.data.frame(tripPurp)
+levels(tripPurp$tripPurp)
+levels(tripPurp$tripPurp) <- c(
+  "Incidental Stop",
+  "One of Many",
+  "Primary Purpose"
+)
+
+purpose <- prop.table(table(tripPurp))*100 # cell percentages
+purpose <- round_df(purpose) # cell percentages
+purpose <- as.data.frame(purpose)
+purpose <- purpose[order(purpose$Freq, decreasing = TRUE),]
+colnames(purpose) <- c("Purpose", "Proportion")
+purpose
+
+purpose1 <- purpose$Purpose[1]
+purpose1 <- as.character(purpose1)
+purpose1
+purpose1Prop <- purpose$Proportion[1]
+purpose2 <- purpose$Purpose[2]
+purpose2 <- as.character(purpose2)
+purpose2
+purpose2Prop <- purpose$Proportion[2]
+purpose3 <- purpose$Purpose[3]
+purpose3 <- as.character(purpose3)
+purpose3
+purpose3Prop <- purpose$Proportion[3]
+
+#=========================================
+# BAR CHART WITH HIGHLIGHTED BAR - PERCENT
+#=========================================
+tripPurpBar <- purpose %>%
+  mutate(highlight_flag = ifelse(Purpose == 'Primary Purpose', T, F)) %>%
+  ggplot(aes(x = Purpose, y = Proportion)) +
+  geom_bar(stat = "identity", aes(fill = highlight_flag)) +
+  scale_fill_manual(values = c('#595959', '#d95f02')) +
+  coord_flip() +
+  labs(x = 'Primary Purpose'
+       ,y = 'Percent of Respondents'
+  ) +
+  #theme with white background
+  theme_bw() +
+  theme(text = element_text(color = '#444444')
+        ,plot.title = element_text(size = 18, face = 'bold')
+        ,legend.position = 'none'
+        ,axis.title = element_text(face = 'bold')
+        ,axis.title.y = element_text(angle = 90, vjust = .5)
+        #eliminates background, gridlines, and chart border
+        ,plot.background = element_blank()
+        ,panel.grid.major = element_blank()
+        ,panel.grid.minor = element_blank()
+        ,panel.border = element_blank()
+  )
+
+grid.arrange(textGrob("Type of Trip to this Refuge",
+                                      gp = gpar(fontsize = 2.5*11, fontface = "bold")),
+                             tripPurpBar,
+                             heights = c(0.1, 1))
 
 
-#############
-## Visits to Public Lands
+##############################################
+# Group Size
+##############################################
+
+group <- subset(nvs2018, select = c(ADULTNUM:MINORNUM))
+group <- na.omit(group)
+group <- as.data.frame(group)
+
+# Adults
+str(group$ADULTNUM)
+range(group$ADULTNUM)
+# Minors
+str(group$MINORNUM)
+range(group$MINORNUM)
+
+# drop responses where Adult = 0
+group <- group[ which(group$ADULTNUM!=0), ]
+group %>% glimpse()
+
+groupsize <- rowSums (group, na.rm = TRUE, dims = 1)
+groupsize
+range(groupsize)
+
+groupmean <- round_df(mean(groupsize), 0)
+groupmean #average group size
+
+groupsizeProp <- prop.table(table(groupsize)) * 100
+groupsizeProp
+range(groupsizeProp)
+
+singleProp <- data.frame(groupsizeProp) #convert to data frame
+singleProp <- subset(singleProp, groupsize == "1") #groupsize equals 1
+singleProp <- round_df(sum(singleProp$Freq), 0) #get proportions
+singleProp #percent that were alone
+
+groupProp <- data.frame(groupsizeProp) #convert to data frame
+groupProp <- subset(groupProp, groupsize != "1") #groupsize greater than 1
+groupProp <-
+  round_df(sum(groupProp$Freq), 0) #add proportions for groups greater than 1
+groupProp #percent that were in a group
+
+adults <- prop.table(table(nvs2018$ADULTNUM)) * 100
+adults
+
+# Group composition - Locals
+
+localgrp <- subset(nvs2018, LOCALAREA == "Local",
+                   select = ADULTNUM:MINORNUM)
+str(localgrp)
+localgrp <- na.omit(localgrp)
+range(localgrp$ADULTNUM)
+range(localgrp)
+
+localgrp$grpSize <- rowSums (localgrp, na.rm = TRUE)
+range(localgrp$grpSize)
+localgrpSize <- round_df(mean(localgrp$grpSize))
+localgrpSize
+
+# Group composition - Nonlocals
+
+nonlocgrp <- subset(nvs2018, LOCALAREA == "Nonlocal",
+                    select = ADULTNUM:MINORNUM)
+head(nonlocgrp)
+nonlocgrpSize <- rowSums (nonlocgrp, na.rm = TRUE)
+range(nonlocgrpSize)
+nonlocgrpSize <- subset(nonlocgrpSize, nonlocgrpSize < 999)
+range(nonlocgrpSize)
+nonlocgrpSize <- round_df(mean(nonlocgrpSize), 0)
+nonlocgrpSize
+
+
+##############################################
+# Visits to Public Lands
+##############################################
 
 # This NWR
 nvs2018$REFLASTYR[nvs2018$REFLASTYR == "999"] <- NA
 str(nvs2018$REFLASTYR)
 nvs2018$REFLASTYR <- as.numeric(nvs2018$REFLASTYR)
-refLast12 <- na.omit(nvs2018$REFLASTYR)
-mean(refLast12)
+refLast12 <- na.omit(nvs2018$REFLASTYR) #remove missing
+refVisitsLast12 <- round_df(mean(refLast12), 0)
+refVisitsLast12 #average visits to this refuge last 12 months
+
 summary(refLast12)
-refLength = length(refLast12[refLast12])
-refOne = round_df(length(refLast12[refLast12 == 1]) / refLength * 100)
-refTwo = round_df(length(refLast12[refLast12 == 2]) / refLength * 100)
+refLength <- length(refLast12[refLast12])
+refOne <- round_df(length(refLast12[refLast12 == 1]) / refLength * 100) #percent first time visitors
+refTwo <- round_df(length(refLast12[refLast12 == 2]) / refLength * 100)
+repeatVis <- round_df(length(refLast12[refLast12 >= 2]) / refLength * 100) #percent repeat visitors
 
 # Other NWRs
 nvs2018$NWRLASTYR[nvs2018$NWRLASTYR == "999"] <- NA

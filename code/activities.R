@@ -1,6 +1,5 @@
 ## @knitr activities
 
-nvs2018 <- read.csv("data/nvs2018.csv")
 library(dplyr)
 library(likert)
 library(reshape2)
@@ -10,13 +9,11 @@ library(ggplot2)
 #library(extrafont)
 #library(tidyr)
 
+nvs2018 <- read.csv("data/nvs2018.csv")
+
 ## activities
 
-act12 <-
-  subset(
-    nvs2018,
-    select = c(WILDOB:SPEVACT)
-  )
+act12 <- subset(nvs2018, select = c(WILDOB:SPEVACT))
 str(act12)
 
 #act12[act12 == "0"] <- NA

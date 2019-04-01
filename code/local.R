@@ -11,7 +11,6 @@ library(tidyr)
 
 nvs2018 <- read.csv("data/nvs2018.csv")
 levels(nvs2018$LOCALAREA)
-nvs2018$LOCALAREA <- droplevels(nvs2018$LOCALAREA, exclude = "2") #OSU data cleanup
 nvs2018$LOCALAREA <- factor(nvs2018$LOCALAREA)
 levels(nvs2018$LOCALAREA)
 
@@ -26,10 +25,27 @@ table(local)
 local %>% glimpse()
 local %>% count(LOCALAREA)
 
+#========================
+# Local/Nonlocal Overview
+#========================
+
+## Local/Nonlocal
+local <- nvs2018$LOCALAREA
+str(local)
+
+localTable <- table(local)
+localTable
+
+propLocal = round_df((localTable)["Local"]/sum(localTable)*100,0)
+propLocal
+
+propNonlocal = round_df((localTable)["Nonlocal"]/sum(localTable)*100,0)
+propNonlocal
 
 #=================
 # SIMPLE BAR CHART
 #=================
+
 ggplot(data = local, aes(x = LOCALAREA)) +
   geom_bar()
 
@@ -132,3 +148,7 @@ donut_plot <- ggplot(donut_data, aes(y = n, fill = LOCALAREA)) +
   theme_void()
 
 ggiraph(ggobj = donut_plot)
+
+
+########
+

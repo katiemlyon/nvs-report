@@ -1,11 +1,13 @@
-#<h1 class=chap5>Visitor Spending in the Local Communities</h1>{-#econ}
+# Visitor Spending in the Local Communities{-#spending}
+
 ```{r econ-setup, echo = FALSE}
 library(knitr)
 #nvs2018 <- readr::read_csv("data/nvs2018.csv")
 read_chunk('code/econ.R')
+read_chunk('code/spending.R')
 ```
 
-```{r econ, include = FALSE}
+```{r spending, include = FALSE}
 ```
 
 ```{block2, econ-preamble, type='preamble1', echo=TRUE}
@@ -13,7 +15,14 @@ Tourists tend to buy a range of goods and services while visiting an area, such 
 ```
 
 ## Visitor Spending in the Local Communities{-}
-Visitors that live within the local 50-mi area of a refuge typically have different spending patterns than those that travel from longer distances. During the two sampling periods, `r (propLocal)`% of surveyed visitors to `r paste(params$RefugeName)` indicated that they live within the local 50-mi area while nonlocal visitors (`r (propNonlocal)`%) stayed in the local area, on average, for `r mean(timeLocal)` days. (tab:expendTable) shows summary statistics for local and nonlocal visitor expenditures in the local communities and at the refuge, with expenditures reported on a per person per day basis. During the two sampling periods, nonlocal visitors (_n_ = `r (propNonlocal)`) spent an average of $`r round_df(mean(spendNonloc$TOTALpersonday),2)` per person per day and local visitors spent an average of $`r round_df(mean(spendLocal$TOTALpersonday),2)` per person per day in the local area. It is important to note that summary statistics based on a small sample size (n < 30) may not provide a reliable representation of that population. Several factors should be considered when estimating the economic importance of refuge-visitor spending in the local communities. These factors include the amount of time spent at the refuge, influence of the refuge on the visitors’ decision to take this trip, and the representativeness of primary activities of the sample of surveyed visitors compared to the general population. Controlling for these factors is beyond the scope of the summary statistics presented in this report.
+Visitors that live within the local 50-mile area of a refuge typically have different spending patterns than those that travel from longer distances. During the two sampling periods, `r (propLocal)`% of surveyed visitors to `r paste(params$RefugeName)` indicated that they live within the local 50-mi area while nonlocal visitors (`r (propNonlocal)`%) stayed in the local area, on average, for `r mean(timeLocal)` days. (tab:expendTable) shows summary statistics for local and nonlocal visitor expenditures in the local communities and at the refuge, with expenditures reported on a per person per day basis. During the two sampling periods, nonlocal visitors (_n_ = `r (propNonlocal)`) spent an average of $`r round_df(mean(spendNonloc$TOTALpersonday),2)` per person per day and local visitors spent an average of $`r round_df(mean(spendLocal$TOTALpersonday),2)` per person per day in the local area. It is important to note that summary statistics based on a small sample size (n < 30) may not provide a reliable representation of that population. Several factors should be considered when estimating the economic importance of refuge-visitor spending in the local communities. These factors include the amount of time spent at the refuge, influence of the refuge on the visitors’ decision to take this trip, and the representativeness of primary activities of the sample of surveyed visitors compared to the general population. Controlling for these factors is beyond the scope of the summary statistics presented in this report.
+
+Visitors to this refuge can be characterized as follows: 
+
+- [#%] of visitors are from the local area (<50 miles) and [#%]  live beyond the local areas
+- Nonlocal visits spend [#days/hours] on average in the local community
+- Visitors spend and average of [$#] per person per day in the local community on such amenities as lodging, food, and supplies, with local visitors averaging [$#] and nonlocal visitors averaging [$#]
+
 
 Table: (\#tab:spend-table)
 ```{r echo=FALSE, tab.cap="Total visitor expenditures in local communities and at `r paste(params$RefugeName)` expressed in dollars per person per day"}
@@ -34,4 +43,5 @@ kable(spendTable,
 spendPlot + theme_fivethirtyeight() + 
   scale_fill_brewer(palette = "Spectral")
 ```
- 
+
+

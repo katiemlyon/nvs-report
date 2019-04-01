@@ -6,35 +6,14 @@ library(plyr)
 library(gridExtra)
 
 
+# read data
 nvs2018 <- read.csv("data/nvs2018.csv")
 
-demographics <-
-  subset(nvs2018,
-         select = c(AGE, AGECAT, GENDER, SCHOOL, EDUCATION, WHITE:OTHERETH, INCOME, EMPLOYFT:EMPLOYOTH))
-str(demographics)
-
-ggplot(demographics, aes(x = AGECAT, y = GENDER, fill = GENDER))
-
-
-ggplot(demographics, aes(x = AGECAT, y = Population, fill = GENDER)) +
-  geom_bar(subset = .(GENDER == "Female"), stat = "identity") +
-  geom_bar(subset = .(GENDER == "Male"), stat = "identity") +
-  scale_y_continuous(breaks = seq(-15000000, 15000000, 5000000),
-                     labels = paste0(as.character(c(seq(15, 0, -5), seq(5, 15, 5))), "m")) +
-  coord_flip() +
-  scale_fill_brewer(palette = "Set1") +
-  theme_bw()
-
-
-# Pyramid 2
+# Pyramid Plot
 # https://stackoverflow.com/questions/4559229/drawing-pyramid-plot-using-r-and-ggplot2
 require(ggplot2)
 df <- data.frame(Type = sample(c('Male', 'Female', 'Female'), 1000, replace=TRUE),
                  Age = sample(18:60, 1000, replace=TRUE))
-
-AgesFactor <- ordered( cut(pyramidDF$AGE, breaks = c(18,seq(30,100,10)),
-                           include.lowest = TRUE))
-
 
 df$Age <- AgesFactor
 
@@ -45,7 +24,7 @@ pyramidDF <- na.omit(pyramidDF)
 str(pyramidDF)
 
 # convert Age column to a factor with the required break-points:
-AgesFactor <- ordered( cut(pyramidDF$AGE, breaks = c(18,seq(30,100,10)),
+AgesFactor <- ordered( cut(pyramidDF$AGE, breaks = c(18,seq(35,100,15)),
                            include.lowest = TRUE))
 
 levels(AgesFactor)

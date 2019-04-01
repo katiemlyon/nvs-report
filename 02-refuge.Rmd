@@ -7,9 +7,8 @@ library(knitr)
 ```{r child=(paste('refuge-info', params$RefugeName, 'description.txt', sep = '/'))}
 ```
 
-
-```{r ref-map1, echo=FALSE, fig.cap="Map of `params$RefugeName`"}
-knitr::include_graphics(paste('refuge-info', params$RefugeName, 'map.png', sep = '/'), dpi = 5)
+```{r refuge-map, out.width="100%", echo=FALSE}
+knitr::include_graphics(paste('refuge-info', params$RefugeName, 'map.png', sep = '/'))
 ```
 TODO: FIX CAPTION AND ADD MAP URL
 

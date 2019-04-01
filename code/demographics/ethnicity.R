@@ -66,7 +66,7 @@ eth$newvar <- rowSums(eth == "Yes")
 eth$Race <- NA
 eth$Race[eth$newvar > 1] <- "Two or more races"
 eth$Race[eth$newvar == 1 & eth$WHITE == "Yes"] <- "White"
-eth$Race[eth$newvar == 1 & eth$HISPANIC == "Yes"] <- "Hispanic/Latino"
+eth$Race[eth$newvar == 1 & eth$HISPANIC == "Yes"] <- "Hispanic, Latino, or Spanish"
 eth$Race[eth$newvar == 1 & eth$AFRAMER == "Yes"] <- "African American/Black"
 eth$Race[eth$newvar == 1 & eth$ASIAN == "Yes"] <- "Asian"
 eth$Race[eth$newvar == 1 & eth$MIDEAST == "Yes"] <- "Middle Eastern"
@@ -87,19 +87,9 @@ names(race) = c(
 )
 ###################
 
-ETH$Race <- NA
-ETH$Race <- rowSums(ETH == "Yes")
-ETH$Race[ETH$newvar > 1] <- "Two or more races"
-ETH$Race[ETH$newvar == 1 & ETH$WHITE == "Yes"] <- "White"
-ETH$Race[ETH$newvar == 1 & ETH$HISPANIC == "Yes"] <- "Hispanic/Latino"
-ETH$Race[ETH$newvar == 1 & ETH$AFRAMER == "Yes"] <- "African American/Black"
-ETH$Race[ETH$newvar == 1 & ETH$ASIAN == "Yes"] <- "Asian"
-ETH$Race[ETH$newvar == 1 & ETH$MIDEAST == "Yes"] <- "Middle Eastern"
-ETH$Race[ETH$newvar == 1 & ETH$PACISL == "Yes"] <- "Pacific Islander"
-ETH$Race[ETH$newvar == 1 & ETH$OTHERETH == "Yes"] <- "Other"
-table(ETH$Race)
 
-raceProp <- prop.table(table(ETH$Race))*100 # cell percentages
+
+raceProp <- prop.table(table(eth$Race))*100 # cell percentages
 raceProp <- round_df(raceProp) # cell percentages
 raceProp <- as.data.frame(raceProp)
 raceProp <- raceProp[order(raceProp$Freq, decreasing = TRUE),]
@@ -108,6 +98,17 @@ raceProp
 
 raceProp <- raceProp %>%
   mutate(Eth = "Race")
+
+race1 <- raceProp$Race[1]
+race1Prop <- raceProp$Proportion[1]
+race2 <- raceProp$Race[2]
+race2Prop <- raceProp$Proportion[2]
+race3 <- raceProp$Race[3]
+race3Prop <- raceProp$Proportion[3]
+
+propHispanic <- raceProp$Proportion[raceProp$Race=="Hispanic, Latino, or Spanish"]
+propHispanic
+
 
 library(tidyverse)
 library(ggthemes)
@@ -155,3 +156,27 @@ p %>%
   left_join(p, ., by = "id") %>% # join new columns with original dataset
   select(-id) # remove ID column if not wanted
 
+## felt welcome by race
+
+ethWelcome <- subset(nvs2018, select = c(FELTWEL, WHITE:OTHERETH))
+
+ethWelcome$newvar <- rowSums(select(ethWelcome, c(2:9))  == "Yes", na.rm = TRUE)
+range(ethWelcome$newvar)
+ethWelcome$Race <- NA
+ethWelcome$Race[ethWelcome$newvar > 1] <- "Two or more races"
+ethWelcome$Race[ethWelcome$newvar == 1 & ethWelcome$WHITE == "Yes"] <- "White"
+ethWelcome$Race[ethWelcome$newvar == 1 & ethWelcome$HISPANIC == "Yes"] <- "Hispanic, Latino, or Spanish"
+ethWelcome$Race[ethWelcome$newvar == 1 & ethWelcome$AFRAMER == "Yes"] <- "African American/Black"
+ethWelcome$Race[ethWelcome$newvar == 1 & ethWelcome$ASIAN == "Yes"] <- "Asian"
+ethWelcome$Race[ethWelcome$newvar == 1 & ethWelcome$MIDEAST == "Yes"] <- "Middle Eastern"
+ethWelcome$Race[ethWelcome$newvar == 1 & ethWelcome$PACISL == "Yes"] <- "Pacific Islander"
+ethWelcome$Race[ethWelcome$newvar == 1 & ethWelcome$OTHERETH == "Yes"] <- "Other"
+table(ethWelcome$Race)
+
+factor(ethWelcome$FELTWEL)
+ethWelcome <- na.omit(ethWelcome)
+
+
+ethWelProp <- ethWelcome %>%
+  group_by(FELTWEL, Race) %>%
+  summarise(n = n())

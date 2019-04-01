@@ -1,7 +1,6 @@
 ## @knitr demographics
 
-nvs2018 <- read.csv("data/nvs2018.csv")
-
+#load packages
 library(dplyr)
 library(likert)
 library(XML)
@@ -12,7 +11,12 @@ library(grid)
 library(gridExtra)
 library(plyr)
 
+#load functions
+source("code/functions/calc_pct.R")
 source("code/functions/round_df.R")
+
+#read data
+nvs2018 <- read.csv("data/nvs2018.csv")
 
 ###########################################
 # Demographic characteristics of the sample
@@ -63,8 +67,6 @@ agePlot
 ######################################
 
 table(nvs2018$GENDER)
-nvs2018$GENDER <-
-  droplevels(nvs2018$GENDER, exclude = c("1951", "1959")) #OSU data cleanup
 
 gender <- nvs2018$GENDER
 str(gender)
@@ -101,14 +103,13 @@ femAveAge
 
 str(nvs2018$SCHOOL)
 range(nvs2018$SCHOOL, na.rm = TRUE)
-nvs2018$SCHOOL[nvs2018$SCHOOL == "163"] <- NA #OSU data cleaning
 table(nvs2018$SCHOOL)
 
 #education <- subset(nvs2018, select = c(SCHOOL))
 education <- nvs2018$SCHOOL
 education <- education[!is.na(education)]
 
-#calculate mean
+# calculate mean education level
 educ <- mean(education)
 educ
 
@@ -116,6 +117,7 @@ educ
 educ <- round_df(educ, 0)
 educ
 
+# specify education levels for output
 educLevel <- NA
 educLevel[educ < 12] <- "Less than HS"
 educLevel[educ >= 12 & educ <= 15] <- "High School/Some College"
@@ -138,9 +140,10 @@ str(income)
 income <- income[!is.na(income)]
 
 #calculate median income
-medIncome = median(income)
+medIncome <- median(income)
 medIncome
 
+# specify income levels for output
 incLevel <- NA
 incLevel[medIncome == 1] <- "Less than $10,000"
 incLevel[medIncome == 2] <- "$10,000-24,999"
@@ -160,9 +163,69 @@ incLevel
 # race - single variable
 
 ethnicity <- subset(nvs2018, select = c(WHITE:OTHERETH))
+str(ethnicity)
 
+ethnicity[ethnicity == "9"] <- NA
 
+ethnicity$Sum <- rowSums(ethnicity == "Yes")
+ethnicity$Race <- NA
+ethnicity$Race[ethnicity$Sum > 1] <- "Two or more races"
+ethnicity$Race[ethnicity$Sum == 1 & ethnicity$WHITE == "Yes"] <- "White"
+ethnicity$Race[ethnicity$Sum == 1 & ethnicity$HISPANIC == "Yes"] <- "Hispanic, Latino, or Spanish"
+ethnicity$Race[ethnicity$Sum == 1 & ethnicity$AFRAMER == "Yes"] <- "African American/Black"
+ethnicity$Race[ethnicity$Sum == 1 & ethnicity$ASIAN == "Yes"] <- "Asian"
+ethnicity$Race[ethnicity$Sum == 1 & ethnicity$MIDEAST == "Yes"] <- "Middle Eastern"
+ethnicity$Race[ethnicity$Sum == 1 & ethnicity$PACISL == "Yes"] <- "Pacific Islander"
+ethnicity$Race[ethnicity$Sum == 1 & ethnicity$OTHERETH == "Yes"] <- "Other"
+table(ethnicity$Race)
 
+race <- table(ethnicity$Race)
+names(race) = c(
+  "White",
+  "Hispanic, Latino, or Spanish",
+  "Black or African American",
+  "Asian",
+  "American Indian or Alaska Native",
+  "Middle Eastern or North African",
+  "Native Hawaiian or Other Pacific Islander",
+  "Some other race or ethnicity"
+)
+###################
+
+raceProp <- prop.table(table(ethnicity$Race))*100 # cell percentages
+raceProp <- round_df(raceProp) # cell percentages
+raceProp <- as.data.frame(raceProp)
+raceProp <- raceProp[order(raceProp$Freq, decreasing = TRUE),]
+colnames(raceProp) <- c("Race", "Proportion")
+raceProp
+
+raceProp <- raceProp %>%
+  mutate(ethnicity = "Race")
+
+race1 <- raceProp$Race[1]
+race1Prop <- raceProp$Proportion[1]
+race2 <- raceProp$Race[2]
+race2Prop <- raceProp$Proportion[2]
+race3 <- raceProp$Race[3]
+race3Prop <- raceProp$Proportion[3]
+
+propHispanic <- raceProp$Proportion[raceProp$Race=="Hispanic, Latino, or Spanish"]
+propHispanic
+
+#################
+## Local/Nonlocal
+#################
+local <- nvs2018$LOCALAREA
+local[local=="9"] <- NA
+
+localTable <- table(local)
+localTable
+
+propLocal <- round_df((localTable)["Local"]/sum(localTable)*100,0)
+propLocal
+
+propNonlocal = round_df((localTable)["Nonlocal"]/sum(localTable)*100,0)
+propNonlocal
 
 ######################################
 # Age/Gender Pyramid
