@@ -50,10 +50,13 @@ MEDIAN INCOME
 
 ### Education{-}
 
-AVERAGE EDUCATION
+ADD AVERAGE EDUCATION
 BAR CHART-FREQUENCIES CATEGORIZED
 HS, HS, COLLEGE, GRAD
 
+```{r}
+edPlot
+```
 
 
 ### Local/Nonlocal Visitors{-}

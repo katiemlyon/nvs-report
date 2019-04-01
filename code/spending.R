@@ -74,21 +74,6 @@ propLocal #percent local
 propNonlocal = round_df((localTable)["Nonlocal"]/sum(localTable)*100,0)
 propNonlocal #percent nonlocal
 
-# combine based on variable values
-data <- data[ which(data$LOCALAREA == "Local" | data$LOCALAREA == "Nonlocal"), ]
-### stacked bar chart
-#data$category <- row.names(spending)
-data <- melt(data, LOCALAREA = "Local")
-#plot, using the variable named variable to determine the fill colour of each bar.
-
-colourCount =length(unique(data$variable))
-spendPlot <- ggplot(data, aes(local, value, fill = variable)) +
-  geom_bar(position = "fill", stat = "identity") +
-  scale_y_continuous(labels = percent)
-spendPlot + theme_fivethirtyeight() + scale_fill_brewer(palette = "Spectral")
-
-
-
 
 # Time Spent in Area
 timeLocal <- nvs2018$DAYSinCOMMUNITY

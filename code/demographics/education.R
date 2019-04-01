@@ -72,3 +72,32 @@ ggplot(titanic, aes(x = Survived)) +
   geom_bar() +
   labs(y = "Passenger Count",
        title = "Titanic Survival Rates")
+
+
+###########
+# What are the education levels?
+# EDCAT is a factor (i.e., categorical) variable, a bar chart
+# is a great visualization to use.
+
+education <- subset(nvs2018, select = EDUCATION)
+education <- na.omit(education)
+
+ggplot(education, aes(x = EDUCATION)) +
+  geom_bar(aes(y = (..count..)/sum(..count..))) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Education",
+       y = "Percent",
+       title = "Education") +
+  coord_flip()
+
+## simpler bar chart
+ggplot(education) +
+  stat_count(mapping = aes(x=EDUCATION, y=..prop.., group=1)) +
+  labs(x = "Education",
+       y = "Percent",
+       title = "Education") +
+  coord_flip() +
+  theme(plot.background = element_blank()
+        ,panel.grid.major = element_blank()
+        ,panel.grid.minor = element_blank()
+        ,panel.border = element_blank())
