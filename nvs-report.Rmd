@@ -550,7 +550,11 @@ The key mode of transportation used by visitors to travel to this refuge was `r 
 ```{r transEval, include = FALSE}
 ```
 
+<<<<<<< HEAD
 A majority of visitors to `r paste(params$RefugeName)` thought transportation-related items were important. They were most satisfied with x and least satisfied with y.
+=======
+A majority of visitors to `r paste(params$RefugeName)` thought transportation-related items were important Figure \@ref(fig:trans-imp). They were most satisfied with x and least satisfied with y Figure \@ref(fig:trans-sat).
+>>>>>>> 9dee1526bb15e8f9ab58d79a74a57b87699cbf20
 
 
 
