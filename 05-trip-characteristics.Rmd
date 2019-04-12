@@ -1,14 +1,4 @@
-```yaml
----
-output:
-  html_document:
-    theme: null
-    highlight: null
-    css: style2.css
----
-```
 # Trip Characteristics{-}
-```
 
 ```{r trip-setup, echo = FALSE}
 library(knitr)
