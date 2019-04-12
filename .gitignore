@@ -3,5 +3,6 @@
 .RData
 .csv
 rsconnect
-_bookdown_files
+_bookdown_files/
 code/examples
+nvs-report.Rmd
